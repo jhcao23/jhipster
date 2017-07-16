@@ -3,7 +3,10 @@ package technology.touchmars.domain;
 import technology.touchmars.config.Constants;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+<<<<<<< HEAD
 import org.apache.commons.lang3.StringUtils;
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.validator.constraints.Email;
 
@@ -14,16 +17,24 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Locale;
+<<<<<<< HEAD
 import java.util.Objects;
 import java.util.Set;
 import java.time.Instant;
+=======
+import java.util.Set;
+import java.time.ZonedDateTime;
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
 /**
  * A user.
  */
 @Entity
 @Table(name = "jhi_user")
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 public class User extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,7 +64,11 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private String lastName;
 
     @Email
+<<<<<<< HEAD
     @Size(min = 5, max = 100)
+=======
+    @Size(max = 100)
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     @Column(length = 100, unique = true)
     private String email;
 
@@ -76,11 +91,18 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @Size(max = 20)
     @Column(name = "reset_key", length = 20)
+<<<<<<< HEAD
     @JsonIgnore
     private String resetKey;
 
     @Column(name = "reset_date")
     private Instant resetDate = null;
+=======
+    private String resetKey;
+
+    @Column(name = "reset_date")
+    private ZonedDateTime resetDate = null;
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
     @JsonIgnore
     @ManyToMany
@@ -88,7 +110,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
         name = "jhi_user_authority",
         joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
         inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     @BatchSize(size = 20)
     private Set<Authority> authorities = new HashSet<>();
 
@@ -106,7 +131,11 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     //Lowercase the login before saving it in database
     public void setLogin(String login) {
+<<<<<<< HEAD
         this.login = StringUtils.lowerCase(login, Locale.ENGLISH);
+=======
+        this.login = login.toLowerCase(Locale.ENGLISH);
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     }
 
     public String getPassword() {
@@ -173,6 +202,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
         this.resetKey = resetKey;
     }
 
+<<<<<<< HEAD
     public Instant getResetDate() {
        return resetDate;
     }
@@ -180,6 +210,16 @@ public class User extends AbstractAuditingEntity implements Serializable {
     public void setResetDate(Instant resetDate) {
        this.resetDate = resetDate;
     }
+=======
+    public ZonedDateTime getResetDate() {
+       return resetDate;
+    }
+
+    public void setResetDate(ZonedDateTime resetDate) {
+       this.resetDate = resetDate;
+    }
+
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     public String getLangKey() {
         return langKey;
     }
@@ -206,12 +246,25 @@ public class User extends AbstractAuditingEntity implements Serializable {
         }
 
         User user = (User) o;
+<<<<<<< HEAD
         return !(user.getId() == null || getId() == null) && Objects.equals(getId(), user.getId());
+=======
+
+        if (!login.equals(user.login)) {
+            return false;
+        }
+
+        return true;
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     }
 
     @Override
     public int hashCode() {
+<<<<<<< HEAD
         return Objects.hashCode(getId());
+=======
+        return login.hashCode();
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     }
 
     @Override

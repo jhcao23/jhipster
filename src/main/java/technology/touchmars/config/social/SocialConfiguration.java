@@ -33,9 +33,14 @@ import org.springframework.social.twitter.connect.TwitterConnectionFactory;
 /**
  * Basic Spring Social configuration.
  *
+<<<<<<< HEAD
  * <p>
  * Creates the beans necessary to manage Connections to social services and
  * link accounts from those services to internal Users.
+=======
+ * <p>Creates the beans necessary to manage Connections to social services and
+ * link accounts from those services to internal Users.</p>
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
  */
 @Configuration
 @EnableSocial
@@ -131,7 +136,11 @@ public class SocialConfiguration implements SocialConfigurer {
     }
 
     @Bean
+<<<<<<< HEAD
     public ProviderSignInController providerSignInController(ConnectionFactoryLocator connectionFactoryLocator, UsersConnectionRepository usersConnectionRepository, SignInAdapter signInAdapter) {
+=======
+    public ProviderSignInController providerSignInController(ConnectionFactoryLocator connectionFactoryLocator, UsersConnectionRepository usersConnectionRepository, SignInAdapter signInAdapter) throws Exception {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         ProviderSignInController providerSignInController = new ProviderSignInController(connectionFactoryLocator, usersConnectionRepository, signInAdapter);
         providerSignInController.setSignUpUrl("/social/signup");
         providerSignInController.setApplicationUrl(environment.getProperty("spring.application.url"));

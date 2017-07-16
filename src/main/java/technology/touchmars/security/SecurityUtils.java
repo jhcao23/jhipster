@@ -34,6 +34,7 @@ public final class SecurityUtils {
     }
 
     /**
+<<<<<<< HEAD
      * Get the JWT of the current user.
      *
      * @return the JWT of the current user
@@ -48,6 +49,8 @@ public final class SecurityUtils {
     }
 
     /**
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
      * Check if a user is authenticated.
      *
      * @return true if the user is authenticated, false otherwise
@@ -64,8 +67,13 @@ public final class SecurityUtils {
 
     /**
      * If the current user has a specific authority (security role).
+<<<<<<< HEAD
      * <p>
      * The name of this method comes from the isUserInRole() method in the Servlet API
+=======
+     *
+     * <p>The name of this method comes from the isUserInRole() method in the Servlet API</p>
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
      *
      * @param authority the authority to check
      * @return true if the current user has the authority, false otherwise

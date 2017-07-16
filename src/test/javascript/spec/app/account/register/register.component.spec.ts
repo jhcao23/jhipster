@@ -1,11 +1,22 @@
 import { ComponentFixture, TestBed, async, inject, tick, fakeAsync } from '@angular/core/testing';
+<<<<<<< HEAD
 import { Renderer, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { JhipsterTestModule } from '../../../test.module';
+=======
+import { MockBackend } from '@angular/http/testing';
+import { Http, BaseRequestOptions } from '@angular/http';
+import { Renderer, ElementRef } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import { LoginModalService } from '../../../../../../main/webapp/app/shared';
 import { Register } from '../../../../../../main/webapp/app/account/register/register.service';
 import { RegisterComponent } from '../../../../../../main/webapp/app/account/register/register.component';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 describe('Component Tests', () => {
 
     describe('RegisterComponent', () => {
@@ -14,10 +25,25 @@ describe('Component Tests', () => {
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
+<<<<<<< HEAD
                 imports: [JhipsterTestModule],
                 declarations: [RegisterComponent],
                 providers: [
                     Register,
+=======
+                declarations: [RegisterComponent],
+                providers: [MockBackend,
+                    Register,
+                    BaseRequestOptions,
+                    {
+                        provide: Http,
+                        useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
+                            return new Http(backendInstance, defaultOptions);
+                        },
+                        deps: [MockBackend, BaseRequestOptions]
+                    },
+
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                     {
                         provide: LoginModalService,
                         useValue: null
@@ -31,8 +57,16 @@ describe('Component Tests', () => {
                         useValue: null
                     }
                 ]
+<<<<<<< HEAD
             }).overrideTemplate(RegisterComponent, '')
             .compileComponents();
+=======
+            }).overrideComponent(RegisterComponent, {
+                set: {
+                    template: ''
+                }
+            }).compileComponents();
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         }));
 
         beforeEach(() => {
@@ -41,7 +75,11 @@ describe('Component Tests', () => {
             comp.ngOnInit();
         });
 
+<<<<<<< HEAD
         it('should ensure the two passwords entered match', () => {
+=======
+        it('should ensure the two passwords entered match', function () {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             comp.registerAccount.password = 'password';
             comp.confirmPassword = 'non-matching';
 
@@ -92,12 +130,20 @@ describe('Component Tests', () => {
             )
         );
 
+<<<<<<< HEAD
         it('should notify of email existence upon 400/email address already in use',
+=======
+        it('should notify of email existence upon 400/e-mail address already in use',
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             inject([Register],
                 fakeAsync((service: Register) => {
                     spyOn(service, 'save').and.returnValue(Observable.throw({
                         status: 400,
+<<<<<<< HEAD
                         _body: 'email address already in use'
+=======
+                        _body: 'e-mail address already in use'
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                     }));
                     comp.registerAccount.password = comp.confirmPassword = 'password';
 

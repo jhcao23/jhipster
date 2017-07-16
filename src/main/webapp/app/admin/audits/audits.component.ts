@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { JhiParseLinks } from 'ng-jhipster';
+=======
+import { Component, OnInit, Inject } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { ParseLinks} from 'ng-jhipster';
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
 import { Audit } from './audit.model';
 import { AuditsService } from './audits.service';
@@ -24,7 +30,11 @@ export class AuditsComponent implements OnInit {
 
     constructor(
         private auditsService: AuditsService,
+<<<<<<< HEAD
         private parseLinks: JhiParseLinks,
+=======
+        private parseLinks: ParseLinks,
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         private paginationConfig: PaginationConfig,
         private datePipe: DatePipe
     ) {
@@ -51,7 +61,11 @@ export class AuditsComponent implements OnInit {
 
     onChangeDate() {
         this.auditsService.query({page: this.page - 1, size: this.itemsPerPage,
+<<<<<<< HEAD
             fromDate: this.fromDate, toDate: this.toDate}).subscribe((res) => {
+=======
+            fromDate: this.fromDate, toDate: this.toDate}).subscribe(res => {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
             this.audits = res.json();
             this.links = this.parseLinks.parse(res.headers.get('link'));
@@ -60,7 +74,11 @@ export class AuditsComponent implements OnInit {
     }
 
     previousMonth() {
+<<<<<<< HEAD
         const dateFormat = 'yyyy-MM-dd';
+=======
+        let dateFormat = 'yyyy-MM-dd';
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         let fromDate: Date = new Date();
 
         if (fromDate.getMonth() === 0) {
@@ -73,11 +91,19 @@ export class AuditsComponent implements OnInit {
     }
 
     today() {
+<<<<<<< HEAD
         const dateFormat = 'yyyy-MM-dd';
         // Today + 1 day - needed if the current day must be included
         const today: Date = new Date();
         today.setDate(today.getDate() + 1);
         const date = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+=======
+        let dateFormat = 'yyyy-MM-dd';
+        // Today + 1 day - needed if the current day must be included
+        let today: Date = new Date();
+
+        let date = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         this.toDate = this.datePipe.transform(date, dateFormat);
     }
 

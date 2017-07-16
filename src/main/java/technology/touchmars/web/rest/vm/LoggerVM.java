@@ -1,6 +1,10 @@
 package technology.touchmars.web.rest.vm;
 
 import ch.qos.logback.classic.Logger;
+<<<<<<< HEAD
+=======
+import com.fasterxml.jackson.annotation.JsonCreator;
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
 /**
  * View Model object for storing a Logback logger.
@@ -16,6 +20,10 @@ public class LoggerVM {
         this.level = logger.getEffectiveLevel().toString();
     }
 
+<<<<<<< HEAD
+=======
+    @JsonCreator
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     public LoggerVM() {
         // Empty public constructor used by Jackson.
     }

@@ -29,6 +29,7 @@ public class SecurityUtilsUnitTest {
     }
 
     @Test
+<<<<<<< HEAD
     public void testgetCurrentUserJWT() {
         SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
         securityContext.setAuthentication(new UsernamePasswordAuthenticationToken("admin", "token"));
@@ -38,6 +39,8 @@ public class SecurityUtilsUnitTest {
     }
 
     @Test
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     public void testIsAuthenticated() {
         SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
         securityContext.setAuthentication(new UsernamePasswordAuthenticationToken("admin", "admin"));
@@ -56,6 +59,7 @@ public class SecurityUtilsUnitTest {
         boolean isAuthenticated = SecurityUtils.isAuthenticated();
         assertThat(isAuthenticated).isFalse();
     }
+<<<<<<< HEAD
 
     @Test
     public void testIsCurrentUserInRole() {
@@ -69,4 +73,6 @@ public class SecurityUtilsUnitTest {
         assertThat(SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)).isFalse();
     }
 
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 }

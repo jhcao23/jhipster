@@ -2,8 +2,11 @@ package technology.touchmars.web.rest.errors;
 
 import java.util.List;
 
+<<<<<<< HEAD
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.dao.ConcurrencyFailureException;
 import org.springframework.http.HttpStatus;
@@ -22,12 +25,19 @@ import org.springframework.web.bind.annotation.*;
 @ControllerAdvice
 public class ExceptionTranslator {
 
+<<<<<<< HEAD
     private final Logger log = LoggerFactory.getLogger(ExceptionTranslator.class);
 
     @ExceptionHandler(ConcurrencyFailureException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
     @ResponseBody
     public ErrorVM processConcurrencyError(ConcurrencyFailureException ex) {
+=======
+    @ExceptionHandler(ConcurrencyFailureException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    @ResponseBody
+    public ErrorVM processConcurencyError(ConcurrencyFailureException ex) {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         return new ErrorVM(ErrorConstants.ERR_CONCURRENCY_FAILURE);
     }
 
@@ -37,11 +47,16 @@ public class ExceptionTranslator {
     public ErrorVM processValidationError(MethodArgumentNotValidException ex) {
         BindingResult result = ex.getBindingResult();
         List<FieldError> fieldErrors = result.getFieldErrors();
+<<<<<<< HEAD
         ErrorVM dto = new ErrorVM(ErrorConstants.ERR_VALIDATION);
         for (FieldError fieldError : fieldErrors) {
             dto.add(fieldError.getObjectName(), fieldError.getField(), fieldError.getCode());
         }
         return dto;
+=======
+
+        return processFieldErrors(fieldErrors);
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     }
 
     @ExceptionHandler(CustomParameterizedException.class)
@@ -58,6 +73,19 @@ public class ExceptionTranslator {
         return new ErrorVM(ErrorConstants.ERR_ACCESS_DENIED, e.getMessage());
     }
 
+<<<<<<< HEAD
+=======
+    private ErrorVM processFieldErrors(List<FieldError> fieldErrors) {
+        ErrorVM dto = new ErrorVM(ErrorConstants.ERR_VALIDATION);
+
+        for (FieldError fieldError : fieldErrors) {
+            dto.add(fieldError.getObjectName(), fieldError.getField(), fieldError.getCode());
+        }
+
+        return dto;
+    }
+
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
@@ -66,12 +94,16 @@ public class ExceptionTranslator {
     }
 
     @ExceptionHandler(Exception.class)
+<<<<<<< HEAD
     public ResponseEntity<ErrorVM> processException(Exception ex) {
         if (log.isDebugEnabled()) {
             log.debug("An unexpected error occurred: {}", ex.getMessage(), ex);
         } else {
             log.error("An unexpected error occurred: {}", ex.getMessage());
         }
+=======
+    public ResponseEntity<ErrorVM> processRuntimeException(Exception ex) {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         BodyBuilder builder;
         ErrorVM errorVM;
         ResponseStatus responseStatus = AnnotationUtils.findAnnotation(ex.getClass(), ResponseStatus.class);

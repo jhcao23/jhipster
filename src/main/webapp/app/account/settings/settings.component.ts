@@ -16,15 +16,25 @@ export class SettingsComponent implements OnInit {
         private account: AccountService,
         private principal: Principal
     ) {
+<<<<<<< HEAD
     }
 
     ngOnInit() {
+=======
+        }
+
+    ngOnInit () {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         this.principal.identity().then((account) => {
             this.settingsAccount = this.copyAccount(account);
         });
     }
 
+<<<<<<< HEAD
     save() {
+=======
+    save () {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         this.account.save(this.settingsAccount).subscribe(() => {
             this.error = null;
             this.success = 'OK';
@@ -37,7 +47,11 @@ export class SettingsComponent implements OnInit {
         });
     }
 
+<<<<<<< HEAD
     copyAccount(account) {
+=======
+    copyAccount (account) {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         return {
             activated: account.activated,
             email: account.email,

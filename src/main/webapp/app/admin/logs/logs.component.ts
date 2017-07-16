@@ -14,12 +14,17 @@ export class LogsComponent implements OnInit {
     orderProp: string;
     reverse: boolean;
 
+<<<<<<< HEAD
     constructor(
+=======
+    constructor (
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         private logsService: LogsService
     ) {
         this.filter = '';
         this.orderProp = 'name';
         this.reverse = false;
+<<<<<<< HEAD
     }
 
     ngOnInit() {
@@ -30,6 +35,18 @@ export class LogsComponent implements OnInit {
         const log = new Log(name, level);
         this.logsService.changeLevel(log).subscribe(() => {
             this.logsService.findAll().subscribe((loggers) => this.loggers = loggers);
+=======
+        }
+
+    ngOnInit() {
+        this.logsService.findAll().subscribe(loggers => this.loggers = loggers);
+    }
+
+    changeLevel (name: string, level: string) {
+        let log = new Log(name, level);
+        this.logsService.changeLevel(log).subscribe(() => {
+            this.logsService.findAll().subscribe(loggers => this.loggers = loggers);
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         });
     }
 }

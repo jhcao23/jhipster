@@ -39,8 +39,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private final CorsFilter corsFilter;
 
     public SecurityConfiguration(AuthenticationManagerBuilder authenticationManagerBuilder, UserDetailsService userDetailsService,
+<<<<<<< HEAD
             TokenProvider tokenProvider,
         CorsFilter corsFilter) {
+=======
+            TokenProvider tokenProvider, CorsFilter corsFilter) {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.userDetailsService = userDetailsService;
@@ -74,6 +78,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         web.ignoring()
             .antMatchers(HttpMethod.OPTIONS, "/**")
             .antMatchers("/app/**/*.{js,html}")
+<<<<<<< HEAD
+=======
+            .antMatchers("/bower_components/**")
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             .antMatchers("/i18n/**")
             .antMatchers("/content/**")
             .antMatchers("/swagger-ui/index.html")

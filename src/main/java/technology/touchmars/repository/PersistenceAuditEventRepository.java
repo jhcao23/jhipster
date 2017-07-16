@@ -1,11 +1,20 @@
 package technology.touchmars.repository;
 
 import technology.touchmars.domain.PersistentAuditEvent;
+<<<<<<< HEAD
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.Instant;
+=======
+
+import java.time.LocalDateTime;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import java.util.List;
 
 /**
@@ -15,6 +24,7 @@ public interface PersistenceAuditEventRepository extends JpaRepository<Persisten
 
     List<PersistentAuditEvent> findByPrincipal(String principal);
 
+<<<<<<< HEAD
     List<PersistentAuditEvent> findByAuditEventDateAfter(Instant after);
 
     List<PersistentAuditEvent> findByPrincipalAndAuditEventDateAfter(String principal, Instant after);
@@ -22,4 +32,13 @@ public interface PersistenceAuditEventRepository extends JpaRepository<Persisten
     List<PersistentAuditEvent> findByPrincipalAndAuditEventDateAfterAndAuditEventType(String principle, Instant after, String type);
 
     Page<PersistentAuditEvent> findAllByAuditEventDateBetween(Instant fromDate, Instant toDate, Pageable pageable);
+=======
+    List<PersistentAuditEvent> findByAuditEventDateAfter(LocalDateTime after);
+
+    List<PersistentAuditEvent> findByPrincipalAndAuditEventDateAfter(String principal, LocalDateTime after);
+
+    List<PersistentAuditEvent> findByPrincipalAndAuditEventDateAfterAndAuditEventType(String principle, LocalDateTime after, String type);
+
+    Page<PersistentAuditEvent> findAllByAuditEventDateBetween(LocalDateTime fromDate, LocalDateTime toDate, Pageable pageable);
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 }

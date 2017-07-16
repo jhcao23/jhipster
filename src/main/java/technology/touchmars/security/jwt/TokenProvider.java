@@ -81,7 +81,11 @@ public class TokenProvider {
 
         User principal = new User(claims.getSubject(), "", authorities);
 
+<<<<<<< HEAD
         return new UsernamePasswordAuthenticationToken(principal, token, authorities);
+=======
+        return new UsernamePasswordAuthenticationToken(principal, "", authorities);
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     }
 
     public boolean validateToken(String authToken) {
@@ -89,6 +93,7 @@ public class TokenProvider {
             Jwts.parser().setSigningKey(secretKey).parseClaimsJws(authToken);
             return true;
         } catch (SignatureException e) {
+<<<<<<< HEAD
             log.info("Invalid JWT signature.");
             log.trace("Invalid JWT signature trace: {}", e);
         } catch (MalformedJwtException e) {
@@ -105,5 +110,10 @@ public class TokenProvider {
             log.trace("JWT token compact of handler are invalid trace: {}", e);
         }
         return false;
+=======
+            log.info("Invalid JWT signature: " + e.getMessage());
+            return false;
+        }
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     }
 }

@@ -19,8 +19,11 @@ spring:
         name: jhipster
     jackson:
         serialization.write_dates_as_timestamps: false
+<<<<<<< HEAD
     cache:
         type: none
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:h2:mem:jhipster;DB_CLOSE_DELAY=-1
@@ -31,7 +34,11 @@ spring:
         database-platform: io.github.jhipster.domain.util.FixedH2Dialect
         database: H2
         open-in-view: false
+<<<<<<< HEAD
         show-sql: false
+=======
+        show-sql: true
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         hibernate:
             ddl-auto: none
             naming:
@@ -45,8 +52,11 @@ spring:
             hibernate.hbm2ddl.auto: validate
     mail:
         host: localhost
+<<<<<<< HEAD
     messages:
         basename: i18n/messages
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     mvc:
         favicon:
             enabled: false
@@ -72,6 +82,7 @@ server:
 
 jhipster:
     async:
+<<<<<<< HEAD
         core-pool-size: 1
         max-pool-size: 50
         queue-capacity: 10000
@@ -89,13 +100,25 @@ jhipster:
         authentication:
             jwt:
                 secret: 48deaab6a22ac3ea5a38540a2432cc0cf0207627
+=======
+        core-pool-size: 2
+        max-pool-size: 50
+        queue-capacity: 10000
+    security:
+        authentication:
+            jwt:
+                secret: 81a894e54b3075e869146b8d118bac82ec445691
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                 # Token is valid 24 hours
                 token-validity-in-seconds: 86400
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
+<<<<<<< HEAD
         logs: # Reports Dropwizard metrics in the logs
             enabled: true
             report-frequency: 60 # in seconds
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
 # ===================================================================
 # Application specific properties

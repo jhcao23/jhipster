@@ -1,10 +1,18 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
+<<<<<<< HEAD
+=======
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import {
     JhipsterSharedLibsModule,
     JhipsterSharedCommonModule,
     CSRFService,
+<<<<<<< HEAD
+=======
+    AuthService,
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     AuthServerProvider,
     AccountService,
     UserService,
@@ -30,6 +38,10 @@ import {
         HasAnyAuthorityDirective
     ],
     providers: [
+<<<<<<< HEAD
+=======
+        CookieService,
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         LoginService,
         LoginModalService,
         AccountService,
@@ -39,6 +51,10 @@ import {
         JhiTrackerService,
         AuthServerProvider,
         SocialService,
+<<<<<<< HEAD
+=======
+        AuthService,
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         UserService,
         DatePipe
     ],

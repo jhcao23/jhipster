@@ -6,10 +6,16 @@ import technology.touchmars.domain.Authority;
 import technology.touchmars.domain.User;
 
 import org.hibernate.validator.constraints.Email;
+<<<<<<< HEAD
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.*;
 import java.time.Instant;
+=======
+
+import javax.validation.constraints.*;
+import java.time.ZonedDateTime;
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -20,7 +26,10 @@ public class UserDTO {
 
     private Long id;
 
+<<<<<<< HEAD
     @NotBlank
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     @Pattern(regexp = Constants.LOGIN_REGEX)
     @Size(min = 1, max = 100)
     private String login;
@@ -45,16 +54,28 @@ public class UserDTO {
 
     private String createdBy;
 
+<<<<<<< HEAD
     private Instant createdDate;
 
     private String lastModifiedBy;
 
     private Instant lastModifiedDate;
+=======
+    private ZonedDateTime createdDate;
+
+    private String lastModifiedBy;
+
+    private ZonedDateTime lastModifiedDate;
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
     private Set<String> authorities;
 
     public UserDTO() {
+<<<<<<< HEAD
         // Empty constructor needed for Jackson.
+=======
+        // Empty constructor needed for MapStruct.
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     }
 
     public UserDTO(User user) {
@@ -67,7 +88,11 @@ public class UserDTO {
 
     public UserDTO(Long id, String login, String firstName, String lastName,
         String email, boolean activated, String imageUrl, String langKey,
+<<<<<<< HEAD
         String createdBy, Instant createdDate, String lastModifiedBy, Instant lastModifiedDate,
+=======
+        String createdBy, ZonedDateTime createdDate, String lastModifiedBy, ZonedDateTime lastModifiedDate,
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         Set<String> authorities) {
 
         this.id = id;
@@ -129,7 +154,11 @@ public class UserDTO {
         return createdBy;
     }
 
+<<<<<<< HEAD
     public Instant getCreatedDate() {
+=======
+    public ZonedDateTime getCreatedDate() {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         return createdDate;
     }
 
@@ -137,11 +166,19 @@ public class UserDTO {
         return lastModifiedBy;
     }
 
+<<<<<<< HEAD
     public Instant getLastModifiedDate() {
         return lastModifiedDate;
     }
 
     public void setLastModifiedDate(Instant lastModifiedDate) {
+=======
+    public ZonedDateTime getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public void setLastModifiedDate(ZonedDateTime lastModifiedDate) {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         this.lastModifiedDate = lastModifiedDate;
     }
 

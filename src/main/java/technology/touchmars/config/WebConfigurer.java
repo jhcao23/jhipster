@@ -80,12 +80,22 @@ public class WebConfigurer implements ServletContextInitializer, EmbeddedServlet
          * See the JHipsterProperties class and your application-*.yml configuration files
          * for more information.
          */
+<<<<<<< HEAD
         if (jHipsterProperties.getHttp().getVersion().equals(JHipsterProperties.Http.Version.V_2_0) &&
             container instanceof UndertowEmbeddedServletContainerFactory) {
 
             ((UndertowEmbeddedServletContainerFactory) container)
                 .addBuilderCustomizers(builder ->
                     builder.setServerOption(UndertowOptions.ENABLE_HTTP2, true));
+=======
+        if (jHipsterProperties.getHttp().getVersion().equals(JHipsterProperties.Http.Version.V_2_0)) {
+            if (container instanceof UndertowEmbeddedServletContainerFactory) {
+                ((UndertowEmbeddedServletContainerFactory) container)
+                    .addBuilderCustomizers((builder) -> {
+                        builder.setServerOption(UndertowOptions.ENABLE_HTTP2, true);
+                    });
+            }
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         }
     }
 
@@ -157,10 +167,21 @@ public class WebConfigurer implements ServletContextInitializer, EmbeddedServlet
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = jHipsterProperties.getCors();
+<<<<<<< HEAD
+=======
+        config.setAllowedHeaders(Arrays.asList("*"));
+        config.setAllowedMethods(Arrays.asList("*"));
+        config.setAllowedOrigins(Arrays.asList("*"));
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         if (config.getAllowedOrigins() != null && !config.getAllowedOrigins().isEmpty()) {
             log.debug("Registering CORS filter");
             source.registerCorsConfiguration("/api/**", config);
             source.registerCorsConfiguration("/v2/api-docs", config);
+<<<<<<< HEAD
+=======
+            source.registerCorsConfiguration("/**", config);
+
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         }
         return new CorsFilter(source);
     }

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+=======
+import { Directive, ElementRef, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import { Principal } from './principal.service';
 
 /**
@@ -27,6 +31,7 @@ export class HasAnyAuthorityDirective {
         this.authorities = typeof value === 'string' ? [ <string> value ] : <string[]> value;
         this.updateView();
         // Get notified each time authentication state changes.
+<<<<<<< HEAD
         this.principal.getAuthenticationState().subscribe((identity) => this.updateView());
     }
 
@@ -35,6 +40,17 @@ export class HasAnyAuthorityDirective {
             this.viewContainerRef.clear();
             if (result) {
                 this.viewContainerRef.createEmbeddedView(this.templateRef);
+=======
+        this.principal.getAuthenticationState().subscribe(identity => this.updateView());
+    }
+
+    private updateView(): void {
+        this.principal.hasAnyAuthority(this.authorities).then(result => {
+            if (result) {
+                this.viewContainerRef.createEmbeddedView(this.templateRef);
+            } else {
+                this.viewContainerRef.clear();
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             }
         });
     }

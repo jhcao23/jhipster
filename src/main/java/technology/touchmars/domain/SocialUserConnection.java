@@ -11,7 +11,10 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "jhi_social_user_connection")
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 public class SocialUserConnection implements Serializable {
 
     private static final long serialVersionUID = 1L;

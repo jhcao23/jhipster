@@ -5,6 +5,10 @@ import { JhipsterSharedModule } from '../shared';
 
 import { HOME_ROUTE, HomeComponent } from './';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 @NgModule({
     imports: [
         JhipsterSharedModule,

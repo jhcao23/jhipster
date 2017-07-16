@@ -5,8 +5,13 @@
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
+<<<<<<< HEAD
         <version>1.5.4.RELEASE</version>
         <relativePath/>
+=======
+        <version>1.5.1.RELEASE</version>
+        <relativePath />
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     </parent>
 
     <groupId>technology.touchmars</groupId>
@@ -15,6 +20,13 @@
     <packaging>war</packaging>
     <name>Jhipster</name>
 
+<<<<<<< HEAD
+=======
+    <prerequisites>
+        <maven>${maven.version}</maven>
+    </prerequisites>
+
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     <properties>
         <argLine>-Djava.security.egd=file:/dev/./urandom -Xmx256m</argLine>
         <assertj.version>3.6.2</assertj.version>
@@ -22,6 +34,7 @@
         <commons-io.version>2.5</commons-io.version>
         <commons-lang.version>3.5</commons-lang.version>
         <docker-maven-plugin.version>0.4.13</docker-maven-plugin.version>
+<<<<<<< HEAD
         <!-- Overridden to get metrics-jcache -->
         <dropwizard-metrics.version>3.2.2</dropwizard-metrics.version>
         <frontend-maven-plugin.version>1.4</frontend-maven-plugin.version>
@@ -34,6 +47,19 @@
         <liquibase-hibernate5.version>3.6</liquibase-hibernate5.version>
         <liquibase-slf4j.version>2.0.0</liquibase-slf4j.version>
         <logstash-logback-encoder.version>4.9</logstash-logback-encoder.version>
+=======
+        <frontend-maven-plugin.version>1.3</frontend-maven-plugin.version>
+        <hibernate.version>5.2.7.Final</hibernate.version>
+        <hikaricp.version>2.6.0</hikaricp.version>
+        <jacoco-maven-plugin.version>0.7.9</jacoco-maven-plugin.version>
+        <java.version>1.8</java.version>
+        <javassist.version>3.21.0-GA</javassist.version>
+        <jhipster.server.version>1.0.4</jhipster.server.version>
+        <jjwt.version>0.7.0</jjwt.version>
+        <liquibase-hibernate5.version>3.6</liquibase-hibernate5.version>
+        <liquibase-slf4j.version>2.0.0</liquibase-slf4j.version>
+        <logstash-logback-encoder.version>4.8</logstash-logback-encoder.version>
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         <m2e.apt.activation>jdt_apt</m2e.apt.activation>
         <mapstruct.version>1.1.0.Final</mapstruct.version>
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
@@ -44,7 +70,11 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.version>3.0.0</maven.version>
         <metrics-spring.version>3.1.3</metrics-spring.version>
+<<<<<<< HEAD
         <node.version>v6.11.0</node.version>
+=======
+        <node.version>v6.9.5</node.version>
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         <!-- These remain empty unless the corresponding profile is active -->
         <profile.no-liquibase />
         <profile.swagger />
@@ -84,12 +114,23 @@
         <sonar.surefire.reportsPath>${project.testresult.directory}/surefire-reports</sonar.surefire.reportsPath>
         <sonar.tests>${project.basedir}/src/test/</sonar.tests>
 
+<<<<<<< HEAD
         <!-- Spring properties -->
         <!-- Spring social -->
         <spring-social-google.version>1.0.0.RELEASE</spring-social-google.version>
         <springfox.version>2.7.0</springfox.version>
         <validation-api.version>1.1.0.Final</validation-api.version>
         <yarn.version>v0.24.6</yarn.version>
+=======
+        <sortpom-maven-plugin.version>2.5.0</sortpom-maven-plugin.version>
+        <!-- Spring properties -->
+        <!-- Spring social -->
+        <spring-social-google.version>1.0.0.RELEASE</spring-social-google.version>
+        <springfox.version>2.6.1</springfox.version>
+        <undertow.version>1.4.10.Final</undertow.version>
+        <validation-api.version>1.1.0.Final</validation-api.version>
+        <yarn.version>v0.20.3</yarn.version>
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     </properties>
 
 
@@ -144,10 +185,13 @@
             <artifactId>jackson-datatype-json-org</artifactId>
         </dependency>
         <dependency>
+<<<<<<< HEAD
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-afterburner</artifactId>
         </dependency>
         <dependency>
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>test</scope>
@@ -189,10 +233,36 @@
             <groupId>com.ryantenney.metrics</groupId>
             <artifactId>metrics-spring</artifactId>
             <version>${metrics-spring.version}</version>
+<<<<<<< HEAD
+=======
+            <exclusions>
+                <exclusion>
+                    <groupId>com.codahale.metrics</groupId>
+                    <artifactId>metrics-annotation</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.codahale.metrics</groupId>
+                    <artifactId>metrics-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.codahale.metrics</groupId>
+                    <artifactId>metrics-healthchecks</artifactId>
+                </exclusion>
+            </exclusions>
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         </dependency>
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
+<<<<<<< HEAD
+=======
+            <exclusions>
+                <exclusion>
+                    <artifactId>tools</artifactId>
+                    <groupId>com.sun</groupId>
+                </exclusion>
+            </exclusions>
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         </dependency>
 
         <dependency>
@@ -225,6 +295,15 @@
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
+<<<<<<< HEAD
+=======
+            <exclusions>
+                <exclusion>
+                    <artifactId>jetty-servlet</artifactId>
+                    <groupId>org.eclipse.jetty</groupId>
+                </exclusion>
+            </exclusions>
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>
@@ -247,12 +326,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
+<<<<<<< HEAD
             <exclusions>
                 <exclusion>
                     <groupId>com.vaadin.external.google</groupId>
                     <artifactId>android-json</artifactId>
                 </exclusion>
             </exclusions>
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -282,12 +364,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+<<<<<<< HEAD
             <exclusions>
                 <exclusion>
                     <groupId>com.vaadin.external.google</groupId>
                     <artifactId>android-json</artifactId>
                 </exclusion>
             </exclusions>
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -383,6 +468,30 @@
         <defaultGoal>spring-boot:run</defaultGoal>
         <plugins>
             <plugin>
+<<<<<<< HEAD
+=======
+                <groupId>com.github.ekryd.sortpom</groupId>
+                <artifactId>sortpom-maven-plugin</artifactId>
+                <version>${sortpom-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sort</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <sortProperties>true</sortProperties>
+                    <nrOfIndentSpace>4</nrOfIndentSpace>
+                    <sortDependencies>groupId,artifactId</sortDependencies>
+                    <sortPlugins>groupId,artifactId</sortPlugins>
+                    <keepBlankLines>true</keepBlankLines>
+                    <expandEmptyElements>false</expandEmptyElements>
+                </configuration>
+            </plugin>
+            <plugin>
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
@@ -628,7 +737,11 @@
                         </lifecycleMappingMetadata>
                     </configuration>
                 </plugin>
+<<<<<<< HEAD
             </plugins>
+=======
+             </plugins>
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         </pluginManagement>
     </build>
     <profiles>
@@ -670,7 +783,11 @@
                                 </goals>
                                 <phase>generate-resources</phase>
                                 <configuration>
+<<<<<<< HEAD
                                     <arguments>run webpack:build</arguments>
+=======
+                                    <arguments>run webpack:build:dev</arguments>
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                                 </configuration>
                             </execution>
                         </executions>
@@ -774,6 +891,7 @@
                                     <goal>yarn</goal>
                                 </goals>
                                 <configuration>
+<<<<<<< HEAD
                                     <arguments>install --force</arguments>
                                 </configuration>
                             </execution>
@@ -785,6 +903,9 @@
                                 <phase>test</phase>
                                 <configuration>
                                     <arguments>run webpack:test</arguments>
+=======
+                                    <arguments>install</arguments>
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                                 </configuration>
                             </execution>
                             <execution>
@@ -813,7 +934,11 @@
                 Profile for doing "continuous compilation" with the Scala Maven plugin.
                 It allows automatic compilation of Java classes as soon as they are saved.
                 To use it, run in 3 terminals:
+<<<<<<< HEAD
                 - './mvnw -Pcc scala:cc' for continuous compilation of your classes
+=======
+                - './mvnw -Pcc scala:cc' for continous compilation of your classes
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                 - './mvnw -Pcc' for hot reload of Spring boot
                 - 'gulp' for hot reload of the HTML/JavaScript assets
                 Everything should hot reload automatically!

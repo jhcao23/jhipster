@@ -24,7 +24,11 @@
 
     <logger name="technology.touchmars" level="#logback.loglevel#"/>
 
+<<<<<<< HEAD
     <logger name="io.github.jhipster" level="#logback.loglevel#"/>
+=======
+    <logger name="io.github.jhipster" level="DEBUG"/>
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
     <logger name="javax.activation" level="WARN"/>
     <logger name="javax.mail" level="WARN"/>
@@ -60,9 +64,12 @@
 
     <root level="#logback.loglevel#">
         <appender-ref ref="CONSOLE"/>
+<<<<<<< HEAD
 <!--
         <appender-ref ref="FILE"/>
 -->
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     </root>
 
 </configuration>

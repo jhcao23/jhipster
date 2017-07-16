@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { ActivatedRoute } from '@angular/router';
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
 @Component({
     selector: 'jhi-error',
@@ -10,6 +13,7 @@ export class ErrorComponent implements OnInit {
     error403: boolean;
 
     constructor(
+<<<<<<< HEAD
         private route: ActivatedRoute
     ) {
     }
@@ -23,5 +27,11 @@ export class ErrorComponent implements OnInit {
                 this.errorMessage = routeData.errorMessage;
             }
         });
+=======
+        ) {
+        }
+
+    ngOnInit() {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     }
 }

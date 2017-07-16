@@ -1,9 +1,19 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+<<<<<<< HEAD
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhipsterTestModule } from '../../../test.module';
 import { JhiHealthCheckComponent } from '../../../../../../main/webapp/app/admin/health/health.component';
 import { JhiHealthService } from '../../../../../../main/webapp/app/admin/health/health.service';
 
+=======
+import { MockBackend } from '@angular/http/testing';
+import { Http, BaseRequestOptions } from '@angular/http';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { JhiHealthCheckComponent } from '../../../../../../main/webapp/app/admin/health/health.component';
+import { JhiHealthService } from '../../../../../../main/webapp/app/admin/health/health.service';
+
+
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 describe('Component Tests', () => {
 
     describe('JhiHealthCheckComponent', () => {
@@ -14,16 +24,39 @@ describe('Component Tests', () => {
 
         beforeEach(async(() => {
             TestBed.configureTestingModule({
+<<<<<<< HEAD
                 imports: [JhipsterTestModule],
                 declarations: [JhiHealthCheckComponent],
                 providers: [
+=======
+                declarations: [JhiHealthCheckComponent],
+                providers: [
+                    MockBackend,
+                    BaseRequestOptions,
+                    {
+                        provide: Http,
+                        useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
+                            return new Http(backendInstance, defaultOptions);
+                        },
+                        deps: [MockBackend, BaseRequestOptions]
+                    },
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                     JhiHealthService,
                     {
                         provide: NgbModal,
                         useValue: null
                     }
                 ]
+<<<<<<< HEAD
             }).overrideTemplate(JhiHealthCheckComponent, '')
+=======
+            })
+            .overrideComponent(JhiHealthCheckComponent, {
+                set: {
+                    template: ''
+                }
+            })
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             .compileComponents();
         }));
 
@@ -75,6 +108,10 @@ describe('Component Tests', () => {
             const expected = [
                 {
                     'name': 'db',
+<<<<<<< HEAD
+=======
+                    'error': undefined,
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                     'status': 'UP',
                     'details': {
                         'database': 'H2',
@@ -118,6 +155,10 @@ describe('Component Tests', () => {
             const expected = [
                 {
                     'name': 'db',
+<<<<<<< HEAD
+=======
+                    'error': undefined,
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                     'status': 'UP',
                     'details': {
                         'database': 'H2',
@@ -131,6 +172,10 @@ describe('Component Tests', () => {
                 },
                 {
                     'name': 'system.subsystem1',
+<<<<<<< HEAD
+=======
+                    'error': undefined,
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                     'status': 'UP',
                     'details': {
                         'property1': 'system.subsystem1.property1'
@@ -177,6 +222,10 @@ describe('Component Tests', () => {
             const expected = [
                 {
                     'name': 'db',
+<<<<<<< HEAD
+=======
+                    'error': undefined,
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                     'status': 'UP',
                     'details': {
                         'database': 'H2',
@@ -190,6 +239,10 @@ describe('Component Tests', () => {
                 },
                 {
                     'name': 'system',
+<<<<<<< HEAD
+=======
+                    'error': undefined,
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                     'status': 'DOWN',
                     'details': {
                         'property1': 'system.property1'
@@ -197,6 +250,10 @@ describe('Component Tests', () => {
                 },
                 {
                     'name': 'system.subsystem1',
+<<<<<<< HEAD
+=======
+                    'error': undefined,
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                     'status': 'UP',
                     'details': {
                         'property1': 'system.subsystem1.property1'
@@ -243,6 +300,10 @@ describe('Component Tests', () => {
             const expected = [
                 {
                     'name': 'db',
+<<<<<<< HEAD
+=======
+                    'error': undefined,
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                     'status': 'UP',
                     'details': {
                         'database': 'H2',
@@ -261,6 +322,10 @@ describe('Component Tests', () => {
                 },
                 {
                     'name': 'system.subsystem1',
+<<<<<<< HEAD
+=======
+                    'error': undefined,
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                     'status': 'UP',
                     'details': {
                         'property1': 'system.subsystem1.property1'

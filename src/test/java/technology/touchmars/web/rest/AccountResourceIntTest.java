@@ -9,9 +9,13 @@ import technology.touchmars.security.AuthoritiesConstants;
 import technology.touchmars.service.MailService;
 import technology.touchmars.service.UserService;
 import technology.touchmars.service.dto.UserDTO;
+<<<<<<< HEAD
 import technology.touchmars.web.rest.vm.KeyAndPasswordVM;
 import technology.touchmars.web.rest.vm.ManagedUserVM;
 import org.apache.commons.lang3.RandomStringUtils;
+=======
+import technology.touchmars.web.rest.vm.ManagedUserVM;
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,14 +24,18 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+<<<<<<< HEAD
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
+<<<<<<< HEAD
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.*;
@@ -38,6 +46,14 @@ import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+=======
+import java.util.*;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Matchers.anyObject;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -45,7 +61,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Test class for the AccountResource REST controller.
  *
+<<<<<<< HEAD
  * @see AccountResource
+=======
+ * @see UserService
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = JhipsterApp.class)
@@ -60,12 +80,15 @@ public class AccountResourceIntTest {
     @Autowired
     private UserService userService;
 
+<<<<<<< HEAD
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
     private HttpMessageConverter[] httpMessageConverters;
 
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     @Mock
     private UserService mockUserService;
 
@@ -87,23 +110,34 @@ public class AccountResourceIntTest {
         AccountResource accountUserMockResource =
             new AccountResource(userRepository, mockUserService, mockMailService);
 
+<<<<<<< HEAD
         this.restMvc = MockMvcBuilders.standaloneSetup(accountResource)
             .setMessageConverters(httpMessageConverters)
             .build();
+=======
+        this.restMvc = MockMvcBuilders.standaloneSetup(accountResource).build();
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         this.restUserMockMvc = MockMvcBuilders.standaloneSetup(accountUserMockResource).build();
     }
 
     @Test
     public void testNonAuthenticatedUser() throws Exception {
         restUserMockMvc.perform(get("/api/authenticate")
+<<<<<<< HEAD
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(content().string(""));
+=======
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(""));
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     }
 
     @Test
     public void testAuthenticatedUser() throws Exception {
         restUserMockMvc.perform(get("/api/authenticate")
+<<<<<<< HEAD
             .with(request -> {
                 request.setRemoteUser("test");
                 return request;
@@ -111,6 +145,15 @@ public class AccountResourceIntTest {
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(content().string("test"));
+=======
+                .with(request -> {
+                    request.setRemoteUser("test");
+                    return request;
+                })
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string("test"));
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     }
 
     @Test
@@ -126,11 +169,15 @@ public class AccountResourceIntTest {
         user.setLastName("doe");
         user.setEmail("john.doe@jhipster.com");
         user.setImageUrl("http://placehold.it/50x50");
+<<<<<<< HEAD
         user.setLangKey("en");
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         user.setAuthorities(authorities);
         when(mockUserService.getUserWithAuthorities()).thenReturn(user);
 
         restUserMockMvc.perform(get("/api/account")
+<<<<<<< HEAD
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
@@ -141,6 +188,17 @@ public class AccountResourceIntTest {
             .andExpect(jsonPath("$.imageUrl").value("http://placehold.it/50x50"))
             .andExpect(jsonPath("$.langKey").value("en"))
             .andExpect(jsonPath("$.authorities").value(AuthoritiesConstants.ADMIN));
+=======
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.login").value("test"))
+                .andExpect(jsonPath("$.firstName").value("john"))
+                .andExpect(jsonPath("$.lastName").value("doe"))
+                .andExpect(jsonPath("$.email").value("john.doe@jhipster.com"))
+                .andExpect(jsonPath("$.imageUrl").value("http://placehold.it/50x50"))
+                .andExpect(jsonPath("$.authorities").value(AuthoritiesConstants.ADMIN));
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     }
 
     @Test
@@ -148,8 +206,13 @@ public class AccountResourceIntTest {
         when(mockUserService.getUserWithAuthorities()).thenReturn(null);
 
         restUserMockMvc.perform(get("/api/account")
+<<<<<<< HEAD
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isInternalServerError());
+=======
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isInternalServerError());
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     }
 
     @Test
@@ -161,7 +224,11 @@ public class AccountResourceIntTest {
             "password",             // password
             "Joe",                  // firstName
             "Shmoe",                // lastName
+<<<<<<< HEAD
             "joe@example.com",      // email
+=======
+            "joe@example.com",      // e-mail
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             true,                   // activated
             "http://placehold.it/50x50", //imageUrl
             "en",                   // langKey
@@ -169,7 +236,11 @@ public class AccountResourceIntTest {
             null,                   // createdDate
             null,                   // lastModifiedBy
             null,                   // lastModifiedDate
+<<<<<<< HEAD
             new HashSet<>(Collections.singletonList(AuthoritiesConstants.USER)));
+=======
+            new HashSet<>(Arrays.asList(AuthoritiesConstants.USER)));
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
         restMvc.perform(
             post("/api/register")
@@ -190,7 +261,11 @@ public class AccountResourceIntTest {
             "password",             // password
             "Funky",                // firstName
             "One",                  // lastName
+<<<<<<< HEAD
             "funky@example.com",    // email
+=======
+            "funky@example.com",    // e-mail
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             true,                   // activated
             "http://placehold.it/50x50", //imageUrl
             "en",                   // langKey
@@ -198,7 +273,11 @@ public class AccountResourceIntTest {
             null,                   // createdDate
             null,                   // lastModifiedBy
             null,                   // lastModifiedDate
+<<<<<<< HEAD
             new HashSet<>(Collections.singletonList(AuthoritiesConstants.USER)));
+=======
+            new HashSet<>(Arrays.asList(AuthoritiesConstants.USER)));
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
         restUserMockMvc.perform(
             post("/api/register")
@@ -219,7 +298,11 @@ public class AccountResourceIntTest {
             "password",         // password
             "Bob",              // firstName
             "Green",            // lastName
+<<<<<<< HEAD
             "invalid",          // email <-- invalid
+=======
+            "invalid",          // e-mail <-- invalid
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             true,               // activated
             "http://placehold.it/50x50", //imageUrl
             "en",                   // langKey
@@ -227,7 +310,11 @@ public class AccountResourceIntTest {
             null,                   // createdDate
             null,                   // lastModifiedBy
             null,                   // lastModifiedDate
+<<<<<<< HEAD
             new HashSet<>(Collections.singletonList(AuthoritiesConstants.USER)));
+=======
+            new HashSet<>(Arrays.asList(AuthoritiesConstants.USER)));
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
         restUserMockMvc.perform(
             post("/api/register")
@@ -248,7 +335,11 @@ public class AccountResourceIntTest {
             "123",              // password with only 3 digits
             "Bob",              // firstName
             "Green",            // lastName
+<<<<<<< HEAD
             "bob@example.com",  // email
+=======
+            "bob@example.com",  // e-mail
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             true,               // activated
             "http://placehold.it/50x50", //imageUrl
             "en",                   // langKey
@@ -256,6 +347,7 @@ public class AccountResourceIntTest {
             null,                   // createdDate
             null,                   // lastModifiedBy
             null,                   // lastModifiedDate
+<<<<<<< HEAD
             new HashSet<>(Collections.singletonList(AuthoritiesConstants.USER)));
 
         restUserMockMvc.perform(
@@ -286,6 +378,9 @@ public class AccountResourceIntTest {
             null,                   // lastModifiedBy
             null,                   // lastModifiedDate
             new HashSet<>(Collections.singletonList(AuthoritiesConstants.USER)));
+=======
+            new HashSet<>(Arrays.asList(AuthoritiesConstants.USER)));
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
         restUserMockMvc.perform(
             post("/api/register")
@@ -307,7 +402,11 @@ public class AccountResourceIntTest {
             "password",             // password
             "Alice",                // firstName
             "Something",            // lastName
+<<<<<<< HEAD
             "alice@example.com",    // email
+=======
+            "alice@example.com",    // e-mail
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             true,                   // activated
             "http://placehold.it/50x50", //imageUrl
             "en",                   // langKey
@@ -315,10 +414,17 @@ public class AccountResourceIntTest {
             null,                   // createdDate
             null,                   // lastModifiedBy
             null,                   // lastModifiedDate
+<<<<<<< HEAD
             new HashSet<>(Collections.singletonList(AuthoritiesConstants.USER)));
 
         // Duplicate login, different email
         ManagedUserVM duplicatedUser = new ManagedUserVM(validUser.getId(), validUser.getLogin(), validUser.getPassword(), validUser.getFirstName(), validUser.getLastName(),
+=======
+            new HashSet<>(Arrays.asList(AuthoritiesConstants.USER)));
+
+        // Duplicate login, different e-mail
+        ManagedUserVM duplicatedUser = new ManagedUserVM(validUser.getId(), validUser.getLogin(), validUser.getPassword(), validUser.getLogin(), validUser.getLastName(),
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             "alicejr@example.com", true, validUser.getImageUrl(), validUser.getLangKey(), validUser.getCreatedBy(), validUser.getCreatedDate(), validUser.getLastModifiedBy(), validUser.getLastModifiedDate(), validUser.getAuthorities());
 
         // Good user
@@ -349,7 +455,11 @@ public class AccountResourceIntTest {
             "password",             // password
             "John",                 // firstName
             "Doe",                  // lastName
+<<<<<<< HEAD
             "john@example.com",     // email
+=======
+            "john@example.com",     // e-mail
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             true,                   // activated
             "http://placehold.it/50x50", //imageUrl
             "en",                   // langKey
@@ -357,9 +467,15 @@ public class AccountResourceIntTest {
             null,                   // createdDate
             null,                   // lastModifiedBy
             null,                   // lastModifiedDate
+<<<<<<< HEAD
             new HashSet<>(Collections.singletonList(AuthoritiesConstants.USER)));
 
         // Duplicate email, different login
+=======
+            new HashSet<>(Arrays.asList(AuthoritiesConstants.USER)));
+
+        // Duplicate e-mail, different login
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         ManagedUserVM duplicatedUser = new ManagedUserVM(validUser.getId(), "johnjr", validUser.getPassword(), validUser.getLogin(), validUser.getLastName(),
             validUser.getEmail(), true, validUser.getImageUrl(), validUser.getLangKey(), validUser.getCreatedBy(), validUser.getCreatedDate(), validUser.getLastModifiedBy(), validUser.getLastModifiedDate(), validUser.getAuthorities());
 
@@ -370,7 +486,11 @@ public class AccountResourceIntTest {
                 .content(TestUtil.convertObjectToJsonBytes(validUser)))
             .andExpect(status().isCreated());
 
+<<<<<<< HEAD
         // Duplicate email
+=======
+        // Duplicate e-mail
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         restMvc.perform(
             post("/api/register")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -390,7 +510,11 @@ public class AccountResourceIntTest {
             "password",             // password
             "Bad",                  // firstName
             "Guy",                  // lastName
+<<<<<<< HEAD
             "badguy@example.com",   // email
+=======
+            "badguy@example.com",   // e-mail
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             true,                   // activated
             "http://placehold.it/50x50", //imageUrl
             "en",                   // langKey
@@ -398,7 +522,11 @@ public class AccountResourceIntTest {
             null,                   // createdDate
             null,                   // lastModifiedBy
             null,                   // lastModifiedDate
+<<<<<<< HEAD
             new HashSet<>(Collections.singletonList(AuthoritiesConstants.ADMIN)));
+=======
+            new HashSet<>(Arrays.asList(AuthoritiesConstants.ADMIN)));
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
         restMvc.perform(
             post("/api/register")
@@ -414,6 +542,7 @@ public class AccountResourceIntTest {
 
     @Test
     @Transactional
+<<<<<<< HEAD
     public void testActivateAccount() throws Exception {
         final String activationKey = "some activation key";
         User user = new User();
@@ -586,12 +715,23 @@ public class AccountResourceIntTest {
             "lastname",                  // lastName
             "save-existing-email-and-login@example.com",    // email
             false,                   // activated
+=======
+    public void testSaveInvalidLogin() throws Exception {
+        UserDTO invalidUser = new UserDTO(
+            null,                   // id
+            "funky-log!n",          // login <-- invalid
+            "Funky",                // firstName
+            "One",                  // lastName
+            "funky@example.com",    // e-mail
+            true,                   // activated
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             "http://placehold.it/50x50", //imageUrl
             "en",                   // langKey
             null,                   // createdBy
             null,                   // createdDate
             null,                   // lastModifiedBy
             null,                   // lastModifiedDate
+<<<<<<< HEAD
             new HashSet<>(Collections.singletonList(AuthoritiesConstants.ADMIN))
         );
 
@@ -759,5 +899,18 @@ public class AccountResourceIntTest {
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(keyAndPassword)))
             .andExpect(status().isInternalServerError());
+=======
+            new HashSet<>(Arrays.asList(AuthoritiesConstants.USER))
+        );
+
+        restUserMockMvc.perform(
+            post("/api/account")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(invalidUser)))
+            .andExpect(status().isBadRequest());
+
+        Optional<User> user = userRepository.findOneByEmail("funky@example.com");
+        assertThat(user.isPresent()).isFalse();
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     }
 }

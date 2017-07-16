@@ -19,10 +19,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+<<<<<<< HEAD
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
+=======
+import java.time.ZonedDateTime;
+import java.util.*;
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
 /**
  * Service class for managing users.
@@ -64,7 +69,14 @@ public class UserService {
        log.debug("Reset user password for reset key {}", key);
 
        return userRepository.findOneByResetKey(key)
+<<<<<<< HEAD
            .filter(user -> user.getResetDate().isAfter(Instant.now().minusSeconds(86400)))
+=======
+            .filter(user -> {
+                ZonedDateTime oneDayAgo = ZonedDateTime.now().minusHours(24);
+                return user.getResetDate().isAfter(oneDayAgo);
+           })
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
            .map(user -> {
                 user.setPassword(passwordEncoder.encode(newPassword));
                 user.setResetKey(null);
@@ -78,7 +90,11 @@ public class UserService {
             .filter(User::getActivated)
             .map(user -> {
                 user.setResetKey(RandomUtil.generateResetKey());
+<<<<<<< HEAD
                 user.setResetDate(Instant.now());
+=======
+                user.setResetDate(ZonedDateTime.now());
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                 return user;
             });
     }
@@ -131,7 +147,11 @@ public class UserService {
         String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
         user.setPassword(encryptedPassword);
         user.setResetKey(RandomUtil.generateResetKey());
+<<<<<<< HEAD
         user.setResetDate(Instant.now());
+=======
+        user.setResetDate(ZonedDateTime.now());
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         user.setActivated(true);
         userRepository.save(user);
         log.debug("Created Information for User: {}", user);
@@ -140,6 +160,7 @@ public class UserService {
 
     /**
      * Update basic information (first name, last name, email, language) for the current user.
+<<<<<<< HEAD
      *
      * @param firstName first name of user
      * @param lastName last name of user
@@ -148,21 +169,31 @@ public class UserService {
      * @param imageUrl image URL of user
      */
     public void updateUser(String firstName, String lastName, String email, String langKey, String imageUrl) {
+=======
+     */
+    public void updateUser(String firstName, String lastName, String email, String langKey) {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).ifPresent(user -> {
             user.setFirstName(firstName);
             user.setLastName(lastName);
             user.setEmail(email);
             user.setLangKey(langKey);
+<<<<<<< HEAD
             user.setImageUrl(imageUrl);
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             log.debug("Changed Information for User: {}", user);
         });
     }
 
     /**
      * Update all information for a specific user, and return the modified user.
+<<<<<<< HEAD
      *
      * @param userDTO user to update
      * @return updated user
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
      */
     public Optional<UserDTO> updateUser(UserDTO userDTO) {
         return Optional.of(userRepository
@@ -202,7 +233,11 @@ public class UserService {
         });
     }
 
+<<<<<<< HEAD
     @Transactional(readOnly = true)
+=======
+    @Transactional(readOnly = true)    
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     public Page<UserDTO> getAllManagedUsers(Pageable pageable) {
         return userRepository.findAllByLoginNot(pageable, Constants.ANONYMOUS_USER).map(UserDTO::new);
     }
@@ -227,15 +262,25 @@ public class UserService {
      * Not activated users should be automatically deleted after 3 days.
      * <p>
      * This is scheduled to get fired everyday, at 01:00 (am).
+<<<<<<< HEAD
      */
     @Scheduled(cron = "0 0 1 * * ?")
     public void removeNotActivatedUsers() {
         List<User> users = userRepository.findAllByActivatedIsFalseAndCreatedDateBefore(Instant.now().minus(3, ChronoUnit.DAYS));
+=======
+     * </p>
+     */
+    @Scheduled(cron = "0 0 1 * * ?")
+    public void removeNotActivatedUsers() {
+        ZonedDateTime now = ZonedDateTime.now();
+        List<User> users = userRepository.findAllByActivatedIsFalseAndCreatedDateBefore(now.minusDays(3));
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         for (User user : users) {
             log.debug("Deleting not activated user {}", user.getLogin());
             userRepository.delete(user);
         }
     }
+<<<<<<< HEAD
 
     /**
      * @return a list of all the authorities
@@ -243,4 +288,6 @@ public class UserService {
     public List<String> getAuthorities() {
         return authorityRepository.findAll().stream().map(Authority::getName).collect(Collectors.toList());
     }
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 }

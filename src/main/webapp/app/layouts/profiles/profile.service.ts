@@ -14,8 +14,13 @@ export class ProfileService {
     getProfileInfo(): Observable<ProfileInfo> {
         return this.http.get(this.profileInfoUrl)
             .map((res: Response) => {
+<<<<<<< HEAD
                 const data = res.json();
                 const pi = new ProfileInfo();
+=======
+                let data = res.json();
+                let pi = new ProfileInfo();
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                 pi.activeProfiles = data.activeProfiles;
                 pi.ribbonEnv = data.ribbonEnv;
                 pi.inProduction = data.activeProfiles.indexOf('prod') !== -1;

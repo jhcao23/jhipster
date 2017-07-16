@@ -3,6 +3,10 @@ package technology.touchmars.web.rest.util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 /**
  * Utility class for HTTP headers creation.
  */
@@ -33,7 +37,11 @@ public final class HeaderUtil {
     }
 
     public static HttpHeaders createFailureAlert(String entityName, String errorKey, String defaultMessage) {
+<<<<<<< HEAD
         log.error("Entity processing failed, {}", defaultMessage);
+=======
+        log.error("Entity creation failed, {}", defaultMessage);
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-jhipsterApp-error", defaultMessage);
         headers.add("X-jhipsterApp-params", entityName);

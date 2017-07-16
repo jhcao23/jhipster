@@ -21,6 +21,7 @@ public class LoggingConfiguration {
 
     private LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
 
+<<<<<<< HEAD
     private final String appName;
 
     private final String serverPort;
@@ -31,6 +32,17 @@ public class LoggingConfiguration {
          JHipsterProperties jHipsterProperties) {
         this.appName = appName;
         this.serverPort = serverPort;
+=======
+    @Value("${spring.application.name}")
+    private String appName;
+
+    @Value("${server.port}")
+    private String serverPort;
+
+    private final JHipsterProperties jHipsterProperties;
+
+    public LoggingConfiguration(JHipsterProperties jHipsterProperties) {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         this.jHipsterProperties = jHipsterProperties;
         if (jHipsterProperties.getLogging().getLogstash().isEnabled()) {
             addLogstashAppender(context);
@@ -74,6 +86,10 @@ public class LoggingConfiguration {
         context.getLogger("ROOT").addAppender(asyncLogstashAppender);
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     /**
      * Logback configuration is achieved by configuration file and API.
      * When configuration file change is detected, the configuration is reset.

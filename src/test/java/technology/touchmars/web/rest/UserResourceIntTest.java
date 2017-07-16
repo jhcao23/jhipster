@@ -1,6 +1,7 @@
 package technology.touchmars.web.rest;
 
 import technology.touchmars.JhipsterApp;
+<<<<<<< HEAD
 import technology.touchmars.domain.Authority;
 import technology.touchmars.domain.User;
 import technology.touchmars.repository.UserRepository;
@@ -11,10 +12,18 @@ import technology.touchmars.service.dto.UserDTO;
 import technology.touchmars.service.mapper.UserMapper;
 import technology.touchmars.web.rest.errors.ExceptionTranslator;
 import technology.touchmars.web.rest.vm.ManagedUserVM;
+=======
+import technology.touchmars.domain.User;
+import technology.touchmars.repository.UserRepository;
+import technology.touchmars.service.UserService;
+import technology.touchmars.service.MailService;
+
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+<<<<<<< HEAD
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,6 +49,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import javax.persistence.EntityManager;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
@@ -51,6 +75,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = JhipsterApp.class)
 public class UserResourceIntTest {
 
+<<<<<<< HEAD
     private static final Long DEFAULT_ID = 1L;
 
     private static final String DEFAULT_LOGIN = "johndoe";
@@ -74,6 +99,8 @@ public class UserResourceIntTest {
     private static final String DEFAULT_LANGKEY = "en";
     private static final String UPDATED_LANGKEY = "fr";
 
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     @Autowired
     private UserRepository userRepository;
 
@@ -83,6 +110,7 @@ public class UserResourceIntTest {
     @Autowired
     private UserService userService;
 
+<<<<<<< HEAD
     @Autowired
     private UserMapper userMapper;
 
@@ -113,6 +141,10 @@ public class UserResourceIntTest {
             .build();
     }
 
+=======
+    private MockMvc restUserMockMvc;
+
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     /**
      * Create a User.
      *
@@ -121,6 +153,7 @@ public class UserResourceIntTest {
      */
     public static User createEntity(EntityManager em) {
         User user = new User();
+<<<<<<< HEAD
         user.setLogin(DEFAULT_LOGIN);
         user.setPassword(RandomStringUtils.random(60));
         user.setActivated(true);
@@ -129,10 +162,23 @@ public class UserResourceIntTest {
         user.setLastName(DEFAULT_LASTNAME);
         user.setImageUrl(DEFAULT_IMAGEURL);
         user.setLangKey(DEFAULT_LANGKEY);
+=======
+        user.setLogin("test");
+        user.setPassword(RandomStringUtils.random(60));
+        user.setActivated(true);
+        user.setEmail("test@test.com");
+        user.setFirstName("test");
+        user.setLastName("test");
+        user.setImageUrl("http://placehold.it/50x50");
+        user.setLangKey("en");
+        em.persist(user);
+        em.flush();
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         return user;
     }
 
     @Before
+<<<<<<< HEAD
     public void initTest() {
         user = createEntity(em);
     }
@@ -642,4 +688,61 @@ public class UserResourceIntTest {
         assertThat(authorityA.hashCode()).isEqualTo(authorityB.hashCode());
     }
 
+=======
+    public void setup() {
+        UserResource userResource = new UserResource(userRepository, mailService, userService);
+        this.restUserMockMvc = MockMvcBuilders.standaloneSetup(userResource).build();
+    }
+
+    @Test
+    public void testGetExistingUser() throws Exception {
+        restUserMockMvc.perform(get("/api/users/admin")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.lastName").value("Administrator"));
+    }
+
+    @Test
+    public void testGetUnknownUser() throws Exception {
+        restUserMockMvc.perform(get("/api/users/unknown")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void testGetExistingUserWithAnEmailLogin() throws Exception {
+        User user = userService.createUser("john.doe@localhost.com", "johndoe", "John", "Doe", "john.doe@localhost.com", "http://placehold.it/50x50", "en-US");
+
+        restUserMockMvc.perform(get("/api/users/john.doe@localhost.com")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(jsonPath("$.login").value("john.doe@localhost.com"));
+
+        userRepository.delete(user);
+    }
+
+    @Test
+    public void testDeleteExistingUserWithAnEmailLogin() throws Exception {
+        User user = userService.createUser("john.doe@localhost.com", "johndoe", "John", "Doe", "john.doe@localhost.com", "http://placehold.it/50x50", "en-US");
+
+        restUserMockMvc.perform(delete("/api/users/john.doe@localhost.com")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+        assertThat(userRepository.findOneByLogin("john.doe@localhost.com").isPresent()).isFalse();
+
+        userRepository.delete(user);
+    }
+
+    @Test
+    public void equalsVerifier() throws Exception {
+        User userA = new User();
+        userA.setLogin("AAA");
+        User userB = new User();
+        userB.setLogin("BBB");
+        assertThat(userA).isNotEqualTo(userB);
+    }
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 }

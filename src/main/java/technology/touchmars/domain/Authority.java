@@ -14,7 +14,10 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "jhi_authority")
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 public class Authority implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,7 +47,15 @@ public class Authority implements Serializable {
 
         Authority authority = (Authority) o;
 
+<<<<<<< HEAD
         return !(name != null ? !name.equals(authority.name) : authority.name != null);
+=======
+        if (name != null ? !name.equals(authority.name) : authority.name != null) {
+            return false;
+        }
+
+        return true;
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     }
 
     @Override

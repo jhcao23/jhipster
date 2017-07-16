@@ -1,10 +1,13 @@
 ######################
 # Project Specific
 ######################
+<<<<<<< HEAD
 bin/
 dist/
 build/
 target/
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 /target/www/**
 /src/test/javascript/coverage/
 /src/test/javascript/PhantomJS*/
@@ -36,10 +39,13 @@ tmp/**/*
 *~.nib
 local.properties
 .classpath
+<<<<<<< HEAD
 .gitattributes
 .yo-rc.json
 .editorconfig
 yarn.lock
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 .settings/
 .loadpath
 .factorypath
@@ -146,4 +152,8 @@ Desktop.ini
 ######################
 # ESLint
 ######################
+<<<<<<< HEAD
 .eslintcache
+=======
+.eslintcache
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8

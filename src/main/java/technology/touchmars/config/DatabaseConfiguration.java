@@ -3,6 +3,10 @@ package technology.touchmars.config;
 import io.github.jhipster.config.JHipsterConstants;
 import io.github.jhipster.config.liquibase.AsyncSpringLiquibase;
 
+<<<<<<< HEAD
+=======
+import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import liquibase.integration.spring.SpringLiquibase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,4 +55,12 @@ public class DatabaseConfiguration {
         }
         return liquibase;
     }
+<<<<<<< HEAD
+=======
+
+    @Bean
+    public Hibernate5Module hibernate5Module() {
+        return new Hibernate5Module();
+    }
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 }

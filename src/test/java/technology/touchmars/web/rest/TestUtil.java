@@ -5,6 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
+<<<<<<< HEAD
+=======
+import org.springframework.data.jpa.repository.JpaRepository;
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import org.springframework.http.MediaType;
 
 import java.io.IOException;
@@ -102,7 +106,10 @@ public class TestUtil {
     /**
      * Verifies the equals/hashcode contract on the domain object.
      */
+<<<<<<< HEAD
     @SuppressWarnings("unchecked")
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     public static void equalsVerifier(Class clazz) throws Exception {
         Object domainObject1 = clazz.getConstructor().newInstance();
         assertThat(domainObject1.toString()).isNotNull();
@@ -111,7 +118,10 @@ public class TestUtil {
         // Test with an instance of another class
         Object testOtherObject = new Object();
         assertThat(domainObject1).isNotEqualTo(testOtherObject);
+<<<<<<< HEAD
         assertThat(domainObject1).isNotEqualTo(null);
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         // Test with an instance of the same class
         Object domainObject2 = clazz.getConstructor().newInstance();
         assertThat(domainObject1).isNotEqualTo(domainObject2);

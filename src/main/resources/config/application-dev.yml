@@ -86,6 +86,7 @@ server:
 jhipster:
     http:
         version: V_1_1 # To use HTTP/2 you will need SSL support (see above the "server.ssl" configuration)
+<<<<<<< HEAD
     # CORS is only enabled by default with the "dev" profile, so BrowserSync can access the API
     cors:
         allowed-origins: "*"
@@ -94,6 +95,8 @@ jhipster:
         exposed-headers:
         allow-credentials: true
         max-age: 1800
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     security:
         authentication:
             jwt:
@@ -116,7 +119,11 @@ jhipster:
             endpoint: /prometheusMetrics
         logs: # Reports Dropwizard metrics in the logs
             enabled: false
+<<<<<<< HEAD
             report-frequency: 60 # in seconds
+=======
+            reportFrequency: 60 # in seconds
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     logging:
         logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
             enabled: false

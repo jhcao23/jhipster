@@ -24,19 +24,31 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
+<<<<<<< HEAD
 import javax.validation.Valid;
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
 
 /**
  * REST controller for managing users.
+<<<<<<< HEAD
  * <p>
  * This class accesses the User entity, and needs to fetch its collection of authorities.
+=======
+ *
+ * <p>This class accesses the User entity, and needs to fetch its collection of authorities.</p>
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
  * <p>
  * For a normal use-case, it would be better to have an eager relationship between User and Authority,
  * and send everything to the client side: there would be no View Model and DTO, a lot less code, and an outer-join
  * which would be good for performance.
+<<<<<<< HEAD
+=======
+ * </p>
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
  * <p>
  * We use a View Model and a DTO for 3 reasons:
  * <ul>
@@ -50,8 +62,12 @@ import java.util.*;
  * (which will get lots of data from the database, for each HTTP call).</li>
  * <li> As this manages users, for security reasons, we'd rather have a DTO layer.</li>
  * </ul>
+<<<<<<< HEAD
  * <p>
  * Another option would be to have a specific JPA entity graph to handle this case.
+=======
+ * <p>Another option would be to have a specific JPA entity graph to handle this case.</p>
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
  */
 @RestController
 @RequestMapping("/api")
@@ -81,6 +97,10 @@ public class UserResource {
      * Creates a new user if the login and email are not already used, and sends an
      * mail with an activation link.
      * The user needs to be activated on creation.
+<<<<<<< HEAD
+=======
+     * </p>
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
      *
      * @param managedUserVM the user to create
      * @return the ResponseEntity with status 201 (Created) and with body the new user, or with status 400 (Bad Request) if the login or email is already in use
@@ -89,6 +109,7 @@ public class UserResource {
     @PostMapping("/users")
     @Timed
     @Secured(AuthoritiesConstants.ADMIN)
+<<<<<<< HEAD
     public ResponseEntity createUser(@Valid @RequestBody ManagedUserVM managedUserVM) throws URISyntaxException {
         log.debug("REST request to save User : {}", managedUserVM);
 
@@ -98,6 +119,13 @@ public class UserResource {
                 .body(null);
         // Lowercase the user login before comparing with database
         } else if (userRepository.findOneByLogin(managedUserVM.getLogin().toLowerCase()).isPresent()) {
+=======
+    public ResponseEntity createUser(@RequestBody ManagedUserVM managedUserVM) throws URISyntaxException {
+        log.debug("REST request to save User : {}", managedUserVM);
+
+        //Lowercase the user login before comparing with database
+        if (userRepository.findOneByLogin(managedUserVM.getLogin().toLowerCase()).isPresent()) {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             return ResponseEntity.badRequest()
                 .headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "userexists", "Login already in use"))
                 .body(null);
@@ -125,11 +153,19 @@ public class UserResource {
     @PutMapping("/users")
     @Timed
     @Secured(AuthoritiesConstants.ADMIN)
+<<<<<<< HEAD
     public ResponseEntity<UserDTO> updateUser(@Valid @RequestBody ManagedUserVM managedUserVM) {
         log.debug("REST request to update User : {}", managedUserVM);
         Optional<User> existingUser = userRepository.findOneByEmail(managedUserVM.getEmail());
         if (existingUser.isPresent() && (!existingUser.get().getId().equals(managedUserVM.getId()))) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "emailexists", "Email already in use")).body(null);
+=======
+    public ResponseEntity<UserDTO> updateUser(@RequestBody ManagedUserVM managedUserVM) {
+        log.debug("REST request to update User : {}", managedUserVM);
+        Optional<User> existingUser = userRepository.findOneByEmail(managedUserVM.getEmail());
+        if (existingUser.isPresent() && (!existingUser.get().getId().equals(managedUserVM.getId()))) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "emailexists", "E-mail already in use")).body(null);
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         }
         existingUser = userRepository.findOneByLogin(managedUserVM.getLogin().toLowerCase());
         if (existingUser.isPresent() && (!existingUser.get().getId().equals(managedUserVM.getId()))) {
@@ -146,16 +182,26 @@ public class UserResource {
      *
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and with body all users
+<<<<<<< HEAD
      */
     @GetMapping("/users")
     @Timed
     public ResponseEntity<List<UserDTO>> getAllUsers(@ApiParam Pageable pageable) {
+=======
+     * @throws URISyntaxException if the pagination headers couldn't be generated
+     */
+    @GetMapping("/users")
+    @Timed
+    public ResponseEntity<List<UserDTO>> getAllUsers(@ApiParam Pageable pageable)
+        throws URISyntaxException {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         final Page<UserDTO> page = userService.getAllManagedUsers(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
     /**
+<<<<<<< HEAD
      * @return a string list of the all of the roles
      */
     @GetMapping("/users/authorities")
@@ -166,6 +212,8 @@ public class UserResource {
     }
 
     /**
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
      * GET  /users/:login : get the "login" user.
      *
      * @param login the login of the user to find

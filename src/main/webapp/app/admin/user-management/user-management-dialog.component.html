@@ -8,7 +8,11 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
+<<<<<<< HEAD
         <div class="form-group" [hidden]="!user.id">
+=======
+        <div class="form-group">
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             <label>ID</label>
             <input type="text" class="form-control" name="id"
                    [(ngModel)]="user.id" readonly>
@@ -17,7 +21,11 @@
         <div class="form-group">
             <label class="form-control-label">Login</label>
             <input type="text" class="form-control" name="login" #loginInput="ngModel"
+<<<<<<< HEAD
                    [(ngModel)]="user.login" required minlength="1" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$">
+=======
+                   [(ngModel)]="user.login" required minlength=1 maxlength=50 pattern="^[_'.@A-Za-z0-9-]*$">
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
             <div *ngIf="loginInput.dirty && loginInput.invalid">
                 <small class="form-text text-danger"
@@ -61,7 +69,11 @@
         <div class="form-group">
             <label class="form-control-label">Email</label>
             <input type="email" class="form-control" name="email" #emailInput="ngModel"
+<<<<<<< HEAD
                    [(ngModel)]="user.email" minlength="5" required maxlength="100">
+=======
+                   [(ngModel)]="user.email" required maxlength="100">
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
             <div *ngIf="emailInput.dirty && emailInput.invalid">
                 <small class="form-text text-danger"
@@ -74,6 +86,7 @@
                   >
                     This field cannot be longer than 100 characters.
                 </small>
+<<<<<<< HEAD
 
                 <small class="form-text text-danger"
                    *ngIf="emailInput.errors.minlength"
@@ -84,6 +97,11 @@
                 <small class="form-text text-danger"
                    *ngIf="emailInput.errors.email">
                     Your email is invalid.
+=======
+		<small class="form-text text-danger"
+                   *ngIf="emailInput.errors.email">
+                    Your e-mail is invalid.
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                  </small>
             </div>
         </div>

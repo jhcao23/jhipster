@@ -27,7 +27,11 @@ public class CustomSocialUsersConnectionRepository implements UsersConnectionRep
         return socialUserConnections.stream()
             .map(SocialUserConnection::getUserId)
             .collect(Collectors.toList());
+<<<<<<< HEAD
     }
+=======
+    };
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
     @Override
     public Set<String> findUserIdsConnectedTo(String providerId, Set<String> providerUserIds) {
@@ -36,7 +40,11 @@ public class CustomSocialUsersConnectionRepository implements UsersConnectionRep
         return socialUserConnections.stream()
             .map(SocialUserConnection::getUserId)
             .collect(Collectors.toSet());
+<<<<<<< HEAD
     }
+=======
+    };
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
     @Override
     public ConnectionRepository createConnectionRepository(String userId) {
@@ -44,5 +52,9 @@ public class CustomSocialUsersConnectionRepository implements UsersConnectionRep
             throw new IllegalArgumentException("userId cannot be null");
         }
         return new CustomSocialConnectionRepository(userId, socialUserConnectionRepository, connectionFactoryLocator);
+<<<<<<< HEAD
     }
+=======
+    };
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 }

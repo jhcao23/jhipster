@@ -27,7 +27,11 @@ export class JhiHealthModalComponent {
         }
 
         // Should display storage space in an human readable unit
+<<<<<<< HEAD
         const val = value / 1073741824;
+=======
+        let val = value / 1073741824;
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         if (val > 1) { // Value
             return val.toFixed(2) + ' GB';
         } else {

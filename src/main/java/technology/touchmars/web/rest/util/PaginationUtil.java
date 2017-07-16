@@ -4,6 +4,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.util.UriComponentsBuilder;
 
+<<<<<<< HEAD
+=======
+import java.net.URISyntaxException;
+
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 /**
  * Utility class for handling pagination.
  *
@@ -16,10 +21,18 @@ public final class PaginationUtil {
     private PaginationUtil() {
     }
 
+<<<<<<< HEAD
     public static HttpHeaders generatePaginationHttpHeaders(Page page, String baseUrl) {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-Total-Count", Long.toString(page.getTotalElements()));
+=======
+    public static HttpHeaders generatePaginationHttpHeaders(Page page, String baseUrl)
+        throws URISyntaxException {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("X-Total-Count", "" + Long.toString(page.getTotalElements()));
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         String link = "";
         if ((page.getNumber() + 1) < page.getTotalPages()) {
             link = "<" + generateUri(baseUrl, page.getNumber() + 1, page.getSize()) + ">; rel=\"next\",";
@@ -39,7 +52,11 @@ public final class PaginationUtil {
         return headers;
     }
 
+<<<<<<< HEAD
     private static String generateUri(String baseUrl, int page, int size) {
+=======
+    private static String generateUri(String baseUrl, int page, int size) throws URISyntaxException {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         return UriComponentsBuilder.fromUriString(baseUrl).queryParam("page", page).queryParam("size", size).toUriString();
     }
 }

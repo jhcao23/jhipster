@@ -12,8 +12,16 @@ describe('Component Tests', () => {
         beforeEach(async(() => {
             TestBed.configureTestingModule({
                 declarations: [PasswordStrengthBarComponent]
+<<<<<<< HEAD
             }).overrideTemplate(PasswordStrengthBarComponent, '')
             .compileComponents();
+=======
+            }).overrideComponent(PasswordStrengthBarComponent, {
+                set: {
+                    template: ''
+                }
+            }).compileComponents();
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         }));
 
         beforeEach(() => {
@@ -47,3 +55,7 @@ describe('Component Tests', () => {
         });
     });
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8

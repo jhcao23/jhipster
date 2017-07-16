@@ -12,7 +12,10 @@ export class User {
     public lastModifiedBy?: string;
     public lastModifiedDate?: Date;
     public password?: string;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     constructor(
         id?: any,
         login?: string,

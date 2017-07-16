@@ -16,7 +16,11 @@ export class StateStorageService {
     }
 
     storePreviousState(previousStateName, previousStateParams) {
+<<<<<<< HEAD
         const previousState = { 'name': previousStateName, 'params': previousStateParams };
+=======
+        let previousState = { 'name': previousStateName, 'params': previousStateParams };
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         this.$sessionStorage.store('previousState', previousState);
     }
 
@@ -24,6 +28,7 @@ export class StateStorageService {
         return this.$sessionStorage.retrieve('destinationState');
     }
 
+<<<<<<< HEAD
     storeUrl(url: string) {
         this.$sessionStorage.store('previousUrl', url);
     }
@@ -34,6 +39,10 @@ export class StateStorageService {
 
     storeDestinationState(destinationState, destinationStateParams, fromState) {
         const destinationInfo = {
+=======
+    storeDestinationState(destinationState, destinationStateParams, fromState) {
+        let destinationInfo = {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             'destination': {
                 'name': destinationState.name,
                 'data': destinationState.data,
@@ -41,7 +50,11 @@ export class StateStorageService {
             'params': destinationStateParams,
             'from': {
                 'name': fromState.name,
+<<<<<<< HEAD
             }
+=======
+             }
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         };
         this.$sessionStorage.store('destinationState', destinationInfo);
     }

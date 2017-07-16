@@ -14,7 +14,11 @@ import { Component, ElementRef, Input, Renderer } from '@angular/core';
             </ul>
         </div>`,
     styleUrls: [
+<<<<<<< HEAD
         'password-strength-bar.scss'
+=======
+        'password-strength-bar.css'
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     ]
 })
 export class PasswordStrengthBarComponent {
@@ -26,6 +30,7 @@ export class PasswordStrengthBarComponent {
     measureStrength(p: string): number {
 
         let force = 0;
+<<<<<<< HEAD
         const regex = /[$-/:-?{-~!"^_`\[\]]/g; // "
         const lowerLetters = /[a-z]+/.test(p);
         const upperLetters = /[A-Z]+/.test(p);
@@ -34,6 +39,17 @@ export class PasswordStrengthBarComponent {
 
         const flags = [lowerLetters, upperLetters, numbers, symbols];
         const passedMatches = flags.filter( (isMatchedFlag: boolean) => {
+=======
+        let regex = /[$-/:-?{-~!"^_`\[\]]/g; // "
+
+        let lowerLetters = /[a-z]+/.test(p);
+        let upperLetters = /[A-Z]+/.test(p);
+        let numbers = /[0-9]+/.test(p);
+        let symbols = regex.test(p);
+
+        let flags = [lowerLetters, upperLetters, numbers, symbols];
+        let passedMatches = flags.filter( (isMatchedFlag: boolean) => {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             return isMatchedFlag === true;
         }).length;
 
@@ -70,12 +86,21 @@ export class PasswordStrengthBarComponent {
     @Input()
     set passwordToCheck(password: string) {
         if (password) {
+<<<<<<< HEAD
             const c = this.getColor(this.measureStrength(password));
             const element = this.elementRef.nativeElement;
             if ( element.className ) {
                 this.renderer.setElementClass(element, element.className , false);
             }
             const lis = element.getElementsByTagName('li');
+=======
+            let c = this.getColor(this.measureStrength(password));
+            let element = this.elementRef.nativeElement;
+            if ( element.className ) {
+                this.renderer.setElementClass(element, element.className , false);
+            }
+            let lis = element.getElementsByTagName('li');
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             for (let i = 0; i < lis.length; i++) {
                 if (i < c.idx) {
                     this.renderer.setElementStyle(lis[i], 'backgroundColor', c.col);

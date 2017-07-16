@@ -5,6 +5,10 @@ import technology.touchmars.domain.User;
 import technology.touchmars.config.Constants;
 import technology.touchmars.repository.UserRepository;
 import technology.touchmars.service.dto.UserDTO;
+<<<<<<< HEAD
+=======
+import java.time.ZonedDateTime;
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import technology.touchmars.service.util.RandomUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,9 +19,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+<<<<<<< HEAD
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import java.util.Optional;
 import java.util.List;
 
@@ -64,7 +71,11 @@ public class UserServiceIntTest {
     public void assertThatResetKeyMustNotBeOlderThan24Hours() {
         User user = userService.createUser("johndoe", "johndoe", "John", "Doe", "john.doe@localhost", "http://placehold.it/50x50", "en-US");
 
+<<<<<<< HEAD
         Instant daysAgo = Instant.now().minus(25, ChronoUnit.HOURS);
+=======
+        ZonedDateTime daysAgo = ZonedDateTime.now().minusHours(25);
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         String resetKey = RandomUtil.generateResetKey();
         user.setActivated(true);
         user.setResetDate(daysAgo);
@@ -83,7 +94,11 @@ public class UserServiceIntTest {
     public void assertThatResetKeyMustBeValid() {
         User user = userService.createUser("johndoe", "johndoe", "John", "Doe", "john.doe@localhost", "http://placehold.it/50x50", "en-US");
 
+<<<<<<< HEAD
         Instant daysAgo = Instant.now().minus(25, ChronoUnit.HOURS);
+=======
+        ZonedDateTime daysAgo = ZonedDateTime.now().minusHours(25);
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         user.setActivated(true);
         user.setResetDate(daysAgo);
         user.setResetKey("1234");
@@ -97,7 +112,11 @@ public class UserServiceIntTest {
     public void assertThatUserCanResetPassword() {
         User user = userService.createUser("johndoe", "johndoe", "John", "Doe", "john.doe@localhost", "http://placehold.it/50x50", "en-US");
         String oldPassword = user.getPassword();
+<<<<<<< HEAD
         Instant daysAgo = Instant.now().minus(2, ChronoUnit.HOURS);
+=======
+        ZonedDateTime daysAgo = ZonedDateTime.now().minusHours(2);
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         String resetKey = RandomUtil.generateResetKey();
         user.setActivated(true);
         user.setResetDate(daysAgo);
@@ -115,8 +134,13 @@ public class UserServiceIntTest {
     @Test
     public void testFindNotActivatedUsersByCreationDateBefore() {
         userService.removeNotActivatedUsers();
+<<<<<<< HEAD
         Instant now = Instant.now();
         List<User> users = userRepository.findAllByActivatedIsFalseAndCreatedDateBefore(now.minus(3, ChronoUnit.DAYS));
+=======
+        ZonedDateTime now = ZonedDateTime.now();
+        List<User> users = userRepository.findAllByActivatedIsFalseAndCreatedDateBefore(now.minusDays(3));
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         assertThat(users).isEmpty();
     }
 
@@ -128,6 +152,7 @@ public class UserServiceIntTest {
             .noneMatch(user -> Constants.ANONYMOUS_USER.equals(user.getLogin())))
             .isTrue();
     }
+<<<<<<< HEAD
 
     @Test
     public void testRemoveNotActivatedUsers() {
@@ -139,4 +164,6 @@ public class UserServiceIntTest {
         userService.removeNotActivatedUsers();
         assertThat(userRepository.findOneByLogin("johndoe")).isNotPresent();
     }
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 }

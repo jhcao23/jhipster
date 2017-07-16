@@ -2,7 +2,11 @@ import { Component, OnInit, AfterViewInit, Renderer, ElementRef } from '@angular
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 
+<<<<<<< HEAD
 import { PasswordResetFinishService } from './password-reset-finish.service';
+=======
+import { PasswordResetFinish } from './password-reset-finish.service';
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import { LoginModalService } from '../../../shared';
 
 @Component({
@@ -20,15 +24,26 @@ export class PasswordResetFinishComponent implements OnInit, AfterViewInit {
     key: string;
 
     constructor(
+<<<<<<< HEAD
         private passwordResetFinishService: PasswordResetFinishService,
+=======
+        private passwordResetFinish: PasswordResetFinish,
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         private loginModalService: LoginModalService,
         private route: ActivatedRoute,
         private elementRef: ElementRef, private renderer: Renderer
     ) {
+<<<<<<< HEAD
     }
 
     ngOnInit() {
         this.route.queryParams.subscribe((params) => {
+=======
+        }
+
+    ngOnInit() {
+        this.route.queryParams.subscribe(params => {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             this.key = params['key'];
         });
         this.resetAccount = {};
@@ -47,7 +62,11 @@ export class PasswordResetFinishComponent implements OnInit, AfterViewInit {
         if (this.resetAccount.password !== this.confirmPassword) {
             this.doNotMatch = 'ERROR';
         } else {
+<<<<<<< HEAD
             this.passwordResetFinishService.save({key: this.key, newPassword: this.resetAccount.password}).subscribe(() => {
+=======
+            this.passwordResetFinish.save({key: this.key, newPassword: this.resetAccount.password}).subscribe(() => {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                 this.success = 'OK';
             }, () => {
                 this.success = null;

@@ -8,7 +8,10 @@ import 'zone.js/dist/sync-test';
 import 'zone.js/dist/proxy';
 import 'zone.js/dist/jasmine-patch';
 import 'rxjs';
+<<<<<<< HEAD
 import 'intl/locale-data/jsonp/en-US.js';
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import { TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 

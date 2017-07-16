@@ -6,7 +6,11 @@ import { JhiHealthModalComponent } from './health-modal.component';
 
 @Component({
     selector: 'jhi-health',
+<<<<<<< HEAD
     templateUrl: './health.component.html'
+=======
+    templateUrl: './health.component.html',
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 })
 export class JhiHealthCheckComponent implements OnInit {
     healthData: any;
@@ -16,8 +20,12 @@ export class JhiHealthCheckComponent implements OnInit {
         private modalService: NgbModal,
         private healthService: JhiHealthService
     ) {
+<<<<<<< HEAD
 
     }
+=======
+        }
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
     ngOnInit() {
         this.refresh();
@@ -38,10 +46,17 @@ export class JhiHealthCheckComponent implements OnInit {
     refresh() {
         this.updatingHealth = true;
 
+<<<<<<< HEAD
         this.healthService.checkHealth().subscribe((health) => {
             this.healthData = this.healthService.transformHealthData(health);
             this.updatingHealth = false;
         }, (error) => {
+=======
+        this.healthService.checkHealth().subscribe(health => {
+            this.healthData = this.healthService.transformHealthData(health);
+            this.updatingHealth = false;
+        }, error => {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
             if (error.status === 503) {
                 this.healthData = this.healthService.transformHealthData(error.json());
                 this.updatingHealth = false;

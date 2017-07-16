@@ -31,7 +31,11 @@ export class JhiConfigurationComponent implements OnInit {
         this.configurationService.get().subscribe((configuration) => {
             this.configuration = configuration;
 
+<<<<<<< HEAD
             for (const config of configuration) {
+=======
+            for (let config of configuration) {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                 if (config.properties !== undefined) {
                     this.configKeys.push(Object.keys(config.properties));
                 }

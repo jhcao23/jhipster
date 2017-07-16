@@ -1,7 +1,10 @@
 package technology.touchmars.web.websocket.dto;
 
+<<<<<<< HEAD
 import java.time.Instant;
 
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 /**
  * DTO for storing a user's activity.
  */
@@ -15,7 +18,11 @@ public class ActivityDTO {
 
     private String page;
 
+<<<<<<< HEAD
     private Instant time;
+=======
+    private String time;
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
     public String getSessionId() {
         return sessionId;
@@ -49,11 +56,19 @@ public class ActivityDTO {
         this.page = page;
     }
 
+<<<<<<< HEAD
     public Instant getTime() {
         return time;
     }
 
     public void setTime(Instant time) {
+=======
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         this.time = time;
     }
 

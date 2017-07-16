@@ -13,8 +13,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+<<<<<<< HEAD
 import java.time.LocalDate;
 import java.time.ZoneId;
+=======
+import java.net.URISyntaxException;
+import java.time.LocalDate;
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import java.util.List;
 
 /**
@@ -35,9 +40,16 @@ public class AuditResource {
      *
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of AuditEvents in body
+<<<<<<< HEAD
      */
     @GetMapping
     public ResponseEntity<List<AuditEvent>> getAll(@ApiParam Pageable pageable) {
+=======
+     * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
+     */
+    @GetMapping
+    public ResponseEntity<List<AuditEvent>> getAll(@ApiParam Pageable pageable) throws URISyntaxException {
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         Page<AuditEvent> page = auditEventService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/management/audits");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
@@ -50,17 +62,29 @@ public class AuditResource {
      * @param toDate the end of the time period of AuditEvents to get
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of AuditEvents in body
+<<<<<<< HEAD
      */
+=======
+     * @throws URISyntaxException if there is an error to generate the pagination HTTP headers
+     */
+
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     @GetMapping(params = {"fromDate", "toDate"})
     public ResponseEntity<List<AuditEvent>> getByDates(
         @RequestParam(value = "fromDate") LocalDate fromDate,
         @RequestParam(value = "toDate") LocalDate toDate,
+<<<<<<< HEAD
         @ApiParam Pageable pageable) {
 
         Page<AuditEvent> page = auditEventService.findByDates(
             fromDate.atStartOfDay(ZoneId.systemDefault()).toInstant(),
             toDate.atStartOfDay(ZoneId.systemDefault()).plusDays(1).toInstant(),
             pageable);
+=======
+        @ApiParam Pageable pageable) throws URISyntaxException {
+
+        Page<AuditEvent> page = auditEventService.findByDates(fromDate.atTime(0, 0), toDate.atTime(23, 59), pageable);
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/management/audits");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 const webpack = require('webpack');
+=======
+const commonConfig = require('./webpack.common.js');
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 const webpackMerge = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const Visualizer = require('webpack-visualizer-plugin');
+<<<<<<< HEAD
 const ngcWebpack = require('ngc-webpack');
 const path = require('path');
 
@@ -43,12 +48,23 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
             ],
             exclude: ['node_modules/generator-jhipster']
         }]
+=======
+const ENV = 'prod';
+
+module.exports = webpackMerge(commonConfig({ env: ENV }), {
+    devtool: 'source-map',
+    output: {
+        path: './target/www',
+        filename: '[hash].[name].bundle.js',
+        chunkFilename: '[hash].[id].chunk.js'
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
     },
     plugins: [
         new ExtractTextPlugin('[hash].styles.css'),
         new Visualizer({
             // Webpack statistics in target folder
             filename: '../stats.html'
+<<<<<<< HEAD
         }),
         new webpack.optimize.UglifyJsPlugin({
             beautify: false,
@@ -71,6 +87,8 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
         new webpack.LoaderOptionsPlugin({
             minimize: true,
             debug: false
+=======
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         })
     ]
 });

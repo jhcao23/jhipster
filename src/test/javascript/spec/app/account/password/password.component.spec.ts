@@ -1,19 +1,33 @@
+<<<<<<< HEAD
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { Observable } from 'rxjs/Rx';
 import { JhipsterTestModule } from '../../../test.module';
 import { PasswordComponent } from '../../../../../../main/webapp/app/account/password/password.component';
 import { PasswordService } from '../../../../../../main/webapp/app/account/password/password.service';
+=======
+import { ComponentFixture, TestBed, async, inject } from '@angular/core/testing';
+import { MockBackend } from '@angular/http/testing';
+import { Http, BaseRequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import { PasswordComponent } from '../../../../../../main/webapp/app/account/password/password.component';
+import { Password } from '../../../../../../main/webapp/app/account/password/password.service';
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 import { Principal } from '../../../../../../main/webapp/app/shared/auth/principal.service';
 import { AccountService } from '../../../../../../main/webapp/app/shared/auth/account.service';
 import { JhiTrackerService } from '../../../../../../main/webapp/app/shared/tracker/tracker.service';
 import { MockTrackerService } from '../../../helpers/mock-tracker.service';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 describe('Component Tests', () => {
 
     describe('PasswordComponent', () => {
 
         let comp: PasswordComponent;
         let fixture: ComponentFixture<PasswordComponent>;
+<<<<<<< HEAD
         let service: PasswordService;
 
         beforeEach(async(() => {
@@ -21,22 +35,53 @@ describe('Component Tests', () => {
                 imports: [JhipsterTestModule],
                 declarations: [PasswordComponent],
                 providers: [
+=======
+        let service: Password;
+
+        beforeEach(async(() => {
+            TestBed.configureTestingModule({
+                declarations: [PasswordComponent],
+                providers: [
+                    MockBackend,
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
                     Principal,
                     AccountService,
                     {
                         provide: JhiTrackerService,
                         useClass: MockTrackerService
                     },
+<<<<<<< HEAD
                     PasswordService
                 ]
             }).overrideTemplate(PasswordComponent, '')
             .compileComponents();
+=======
+                    BaseRequestOptions,
+                    {
+                        provide: Http,
+                        useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
+                            return new Http(backendInstance, defaultOptions);
+                        },
+                        deps: [MockBackend, BaseRequestOptions]
+                    },
+                    Password
+                ]
+            }).overrideComponent(PasswordComponent, {
+                set: {
+                    template: ''
+                }
+            }).compileComponents();
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         }));
 
         beforeEach(() => {
             fixture = TestBed.createComponent(PasswordComponent);
             comp = fixture.componentInstance;
+<<<<<<< HEAD
             service = fixture.debugElement.injector.get(PasswordService);
+=======
+            service = fixture.debugElement.injector.get(Password);
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
         });
 
         it('should show error if passwords do not match', () => {

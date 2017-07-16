@@ -1,5 +1,9 @@
 # jhipster
+<<<<<<< HEAD
 This application was generated using JHipster 4.6.1, you can find documentation and help at [https://jhipster.github.io/documentation-archive/v4.6.1](https://jhipster.github.io/documentation-archive/v4.6.1).
+=======
+This application was generated using JHipster 4.0.6, you can find documentation and help at [https://jhipster.github.io/documentation-archive/v4.0.6](https://jhipster.github.io/documentation-archive/v4.0.6).
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
 ## Development
 
@@ -11,7 +15,11 @@ Before you can build this project, you must install and configure the following 
    Depending on your system, you can install Yarn either from source or as a pre-packaged bundle.
 
 After installing Node, you should be able to run the following command to install development tools.
+<<<<<<< HEAD
 You will only need to run this command when dependencies change in [package.json](package.json).
+=======
+You will only need to run this command when dependencies change in `package.json`.
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
     yarn install
 
@@ -25,7 +33,11 @@ auto-refreshes when files change on your hard drive.
     yarn start
 
 [Yarn][] is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
+<<<<<<< HEAD
 specifying a newer version in [package.json](package.json). You can also run `yarn update` and `yarn install` to manage dependencies.
+=======
+specifying a newer version in `package.json`. You can also run `yarn update` and `yarn install` to manage dependencies.
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 Add the `help` flag on any command to see how you can use it. For example, `yarn help update`.
 
 The `yarn run` command will list all of the scripts available to run for this project.
@@ -42,12 +54,20 @@ To benefit from TypeScript type definitions from [DefinitelyTyped][] repository 
 
 Then you would import the JS and CSS files specified in library's installation instructions so that [Webpack][] knows about them:
 
+<<<<<<< HEAD
 Edit [src/main/webapp/app/vendor.ts](src/main/webapp/app/vendor.ts) file:
+=======
+Edit `src/main/webapp/app/vendor.ts`file:
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 ~~~
 import 'leaflet/dist/leaflet.js';
 ~~~
 
+<<<<<<< HEAD
 Edit [src/main/webapp/content/css/vendor.css](src/main/webapp/content/css/vendor.css) file:
+=======
+Edit `src/main/webapp/content/css/vendor.css` file:
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 ~~~
 @import '~leaflet/dist/leaflet.css';
 ~~~
@@ -93,17 +113,30 @@ To launch your application's tests, run:
 
 ### Client tests
 
+<<<<<<< HEAD
 Unit tests are run by [Karma][] and written with [Jasmine][]. They're located in [src/test/javascript/](src/test/javascript/) and can be run with:
 
     yarn test
 
 
+=======
+Unit tests are run by [Karma][] and written with [Jasmine][]. They're located in `src/test/javascript/` and can be run with:
+
+    yarn test
+
+UI end-to-end tests are powered by [Protractor][], which is built on top of WebDriverJS. They're located in `src/test/javascript/e2e`
+and can be run by starting Spring Boot in one terminal (`./mvnw spring-boot:run`) and running the tests (`gulp itest`) in a second one.
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
 For more information, refer to the [Running tests page][].
 
 ## Using Docker to simplify development (optional)
 
+<<<<<<< HEAD
 You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
+=======
+You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the `src/main/docker` folder to launch required third party services.
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 For example, to start a mysql database in a docker container, run:
 
     docker-compose -f src/main/docker/mysql.yml up -d
@@ -121,6 +154,7 @@ Then run:
 
     docker-compose -f src/main/docker/app.yml up -d
 
+<<<<<<< HEAD
 For more information refer to [Using Docker and Docker-Compose][], this page also contains information on the docker-compose sub-generator (`jhipster docker-compose`), which is able to generate docker configurations for one or several JHipster applications.
 
 ## Continuous Integration (optional)
@@ -135,6 +169,22 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [Using JHipster in production]: https://jhipster.github.io/documentation-archive/v4.6.1/production/
 [Running tests page]: https://jhipster.github.io/documentation-archive/v4.6.1/running-tests/
 [Setting up Continuous Integration]: https://jhipster.github.io/documentation-archive/v4.6.1/setting-up-ci/
+=======
+For more information refer to [Using Docker and Docker-Compose][], this page also contains information on the docker-compose sub-generator (`yo jhipster:docker-compose`), which is able to generate docker configurations for one or several JHipster applications.
+
+## Continuous Integration (optional)
+
+To set up a CI environment, consult the [Setting up Continuous Integration][] page.
+
+[JHipster Homepage and latest documentation]: https://jhipster.github.io
+[JHipster 4.0.6 archive]: https://jhipster.github.io/documentation-archive/v4.0.6
+
+[Using JHipster in development]: https://jhipster.github.io/documentation-archive/v4.0.6/development/
+[Using Docker and Docker-Compose]: https://jhipster.github.io/documentation-archive/v4.0.6/docker-compose
+[Using JHipster in production]: https://jhipster.github.io/documentation-archive/v4.0.6/production/
+[Running tests page]: https://jhipster.github.io/documentation-archive/v4.0.6/running-tests/
+[Setting up Continuous Integration]: https://jhipster.github.io/documentation-archive/v4.0.6/setting-up-ci/
+>>>>>>> 3889c913b8266976ebe9e376a2fe1ef96ea458d8
 
 
 [Node.js]: https://nodejs.org/
